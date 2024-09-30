@@ -1,0 +1,171 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  login String
+  hashedPassword String
+}
+
+model Faq {
+  id Int @id @default(autoincrement())
+  title String
+  answer String
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+  CartWorkstations Cart_Workstation[]
+  cartPart CartPart[]
+}
+
+model Workstation {
+  id Int @id @default(autoincrement())
+  images String[]
+
+  cartWorkstations Cart_Workstation[]
+  quickChargeModule QuickChargeModuleEquip[]
+  invertorModule InvertorEquip[]
+  leadBattery12VChargingModule LeadBattery12VChargingEquip []
+  powerbankModule PowerbankEquip[]
+  solarTrackerModule SolarTrackerEquip[]
+  solarPanelModule SolarPanelEquip[]
+  jumpStarter JumpStarterEquip[]
+  universalVoltageModule UniversalVoltageEquip[]
+  
+  
+}
+model LeadBattery12VChargingEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+model InvertorEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+
+model PowerbankEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  countUsb Int
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+
+model UniversalVoltageEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+
+model JumpStarterEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+
+model SolarPanelEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+
+model SolarTrackerEquip {
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+model QuickChargeModuleEquip{
+  id Int @id @default(autoincrement())
+  price Int
+  desc String
+  name String
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+
+}
+
+model Cart_Workstation {
+  id_cart_workstation Int @id @default(autoincrement())
+
+  cartId Int
+  cart Cart @relation(fields: [cartId], references: [id])
+
+  workstationId Int
+  workstation Workstation @relation(fields: [workstationId], references: [id])
+}
+
+model Part {
+  id Int @id @default(autoincrement())
+  name String
+  descrption String
+  images String[]
+  characteristics Json
+
+  cartPart CartPart[]
+
+}
+
+model PartConfiguration {
+  id_configuration Int @id @default(autoincrement())
+  price Int
+  
+  usbConfigrationId Int?
+  usbConfigration UsbConfiguration?
+
+  cartPart CartPart[]
+}
+
+model UsbConfiguration {
+  id_usb_configuration Int @id @default(autoincrement())
+  count_usb Int
+  configurationId Int @unique
+  partConfiguration PartConfiguration @relation(fields: [configurationId], references: [id_configuration])
+}
+
+model CartPart {
+  id_cart_part Int @id @default(autoincrement())
+  
+  cartId Int
+  cart Cart @relation(fields: [cartId], references: [id])
+
+  partId Int
+  part Part @relation(fields: [partId], references: [id])
+
+  configPartId Int
+  configPart PartConfiguration @relation(fields: [configPartId], references: [id_configuration])
+}
