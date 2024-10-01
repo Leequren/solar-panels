@@ -7,8 +7,7 @@ const ProductsCardStyled = styled.div`
     align-items: center;
     justify-content: center;
     gap: 80px;
-    padding-top: 150px;
-    padding-bottom: 200px;
+    padding: 150px 185px 200px;
 `
 
 const ButtonContainer = styled.div`
