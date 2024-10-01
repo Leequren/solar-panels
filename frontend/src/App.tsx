@@ -1,12 +1,14 @@
 import "./App.css";
-import { MainPage } from "./pages/mainPage/MainPage";
+import {MainPage} from "./pages/mainPage/MainPage";
+import {ProductsPage} from "./pages/ProductsPage/ProductsPage.tsx";
 
 function App() {
-  return (
-    <>
-      <MainPage />
-    </>
-  );
+    return (
+        <>
+            <MainPage/>
+            <ProductsPage/>
+        </>
+    );
 }
 
 export default App;
