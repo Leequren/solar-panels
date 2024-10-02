@@ -1,44 +1,44 @@
-import { ContactsItem } from "./ContactsItem.tsx";
+import {ContactsItem} from "./ContactsItem.tsx";
 import Phone from "../../../assets/img/CallIcon.svg?react";
 import Email from "../../../assets/img/EmailIcon.svg?react";
 import Address from "../../../assets/img/AddressIcon.svg?react";
-import { FC, SVGProps } from "react";
+import {FC, SVGProps} from "react";
 import styled from "styled-components";
 
 interface IContactItem {
-  name: string;
-  Icon: FC<SVGProps<SVGSVGElement>>;
+    name: string;
+    Icon: FC<SVGProps<SVGSVGElement>>
 }
 
 const contactItems: IContactItem[] = [
-  {
-    name: "+7 (000) 000 00 00",
-    Icon: Phone,
-  },
-  {
-    name: "solarpanels@yandex.ru",
-    Icon: Email,
-  },
-  {
-    name: "Тамбовская об-ть, мкр-н Тамбовский, г.п. Новолядинский Поссовет, р.п. Новая Ляда, ул. Будённого д. 43, кв. 1",
-    Icon: Address,
-  },
-];
+    {
+        name: "+7 (000) 000 00 00",
+        Icon: Phone,
+    },
+    {
+        name: "solarpanels@yandex.ru",
+        Icon: Email,
+    },
+    {
+        name: "Тамбовская об-ть, мкр-н Тамбовский, г.п. Новолядинский Поссовет, р.п. Новая Ляда, ул. Будённого д. 43, кв. 1",
+        Icon: Address,
+    }
+]
 
 const ContactsStyled = styled.div`
-  font-family: Jost, sans-serif;
-  display: flex;
-  flex-direction: column;
-  color: white;
-  gap: 37px;
-`;
+    font-family: Jost, sans-serif;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 37px;
+`
 
 export function Contacts() {
-  return (
-    <ContactsStyled>
-      {contactItems.map((item, index) => (
-        <ContactsItem key={index} {...item} />
-      ))}
-    </ContactsStyled>
-  );
+    return (
+        <ContactsStyled>
+            {contactItems.map((item, index) => (
+                <ContactsItem key={index} {...item} />
+            ))}
+        </ContactsStyled>
+    )
 }

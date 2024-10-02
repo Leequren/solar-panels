@@ -6,7 +6,7 @@ interface ProductsCardProps {
     description: string,
     price: number,
     path: string
-}
+};
 
 const ProductsCardStyled = styled.div`
     display: flex;
@@ -53,7 +53,7 @@ const ProductsCardStyled = styled.div`
         width: 210px;
         height: 60px;
     }
-`
+`;
 
 export function ProductsCard({title, description, price, path, ImgUrl}: ProductsCardProps) {
     return (
@@ -64,5 +64,5 @@ export function ProductsCard({title, description, price, path, ImgUrl}: Products
             <span>Цена: {price} рублей</span>
             <button>Подробнее</button>
         </ProductsCardStyled>
-    )
+    );
 }
