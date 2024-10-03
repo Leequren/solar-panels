@@ -94,6 +94,60 @@ export const Products: FC<ProductsProps> = ({ title, description }) => {
           price={65000}
           path={"/products"}
         />
+        <ProductsCard
+          ImgUrl={"/img/ProductsCardImage3.png"}
+          title={"Мощность подключаемых уст-в до 80 Вт."}
+          description={
+            "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
+          }
+          price={65000}
+          path={"/products"}
+        />
+        <ProductsCard
+          ImgUrl={"/img/ProductsCardImage3.png"}
+          title={"Мощность подключаемых уст-в до 80 Вт."}
+          description={
+            "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
+          }
+          price={65000}
+          path={"/products"}
+        />
+        <ProductsCard
+          ImgUrl={"/img/ProductsCardImage3.png"}
+          title={"Мощность подключаемых уст-в до 80 Вт."}
+          description={
+            "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
+          }
+          price={65000}
+          path={"/products"}
+        />
+        <ProductsCard
+          ImgUrl={"/img/ProductsCardImage3.png"}
+          title={"Мощность подключаемых уст-в до 80 Вт."}
+          description={
+            "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
+          }
+          price={65000}
+          path={"/products"}
+        />
+        <ProductsCard
+          ImgUrl={"/img/ProductsCardImage3.png"}
+          title={"Мощность подключаемых уст-в до 80 Вт."}
+          description={
+            "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
+          }
+          price={65000}
+          path={"/products"}
+        />
+        <ProductsCard
+          ImgUrl={"/img/ProductsCardImage3.png"}
+          title={"Мощность подключаемых уст-в до 80 Вт."}
+          description={
+            "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
+          }
+          price={65000}
+          path={"/products"}
+        />
       </ProductsCardContainerStyled>
     </ProductsStyled>
   );

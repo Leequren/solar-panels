@@ -1,48 +1,111 @@
 import { AdvantagesCard } from "./AdvantagesCard";
 import styled from "styled-components";
 
-interface AdventagesProps {
+interface AdvantagesProps {
   title: string;
   description: string;
 }
 
-const AdventagesStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  padding-top: 150px;
+const AdvantagesStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding-top: 150px;
+    
+    @media (max-width: 1200px) {
+        padding-top: 100px;
+        gap: 30px;
+    }
+    @media (max-width: 700px) {
+        padding-top: 80px;
+        gap: 25px;
+    }
+    @media (max-width: 500px) {
+        padding-top: 50px;
+    }
+
 `;
+
 const CardStyled = styled.div`
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    
+    @media (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
+
 const TitleStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
 
-  > h1 {
-    font-size: 60px;
-    font-weight: 500;
-  }
+    > h1 {
+        font-size: 60px;
+        font-weight: 500;
+    }
 
-  > p {
-    font-size: 26px;
-    font-weight: 500;
-    width: 740px;
-    text-align: center;
-    color: #48494b;
-  }
+    > p {
+        font-size: 26px;
+        font-weight: 500;
+        width: 740px;
+        text-align: center;
+        color: #48494b;
+    }
+
+    @media (max-width: 1500px) {
+        > h1 {
+            font-size: 50px;
+        }
+
+        > p {
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 1200px) {
+        gap: 15px;
+        > h1 {
+            font-size: 40px;
+        }
+
+        > p {
+            font-size: 17px;
+        }
+    }
+    @media (max-width: 700px) {
+        > h1 {
+            font-size: 30px;
+        }
+
+        > p {
+            font-size: 15px;
+            text-align: center;
+            text-wrap: wrap;
+            width: 100%;
+        }
+    }
+    @media (max-width: 500px) {
+        gap: 13px;
+        > h1 {
+            font-size: 20px;
+        }
+
+        > p {
+            font-size: 13px;
+        }
+    }    
+
 `;
 
-export function Advantages({ title, description }: AdventagesProps) {
+export function Advantages({ title, description }: AdvantagesProps) {
   return (
-    <AdventagesStyled>
+    <AdvantagesStyled>
       <TitleStyled>
         <h1>{title}</h1>
         <p>{description}</p>
@@ -85,6 +148,6 @@ export function Advantages({ title, description }: AdventagesProps) {
           bgImage={"/img/BgImageAdvantages4.png"}
         />
       </CardStyled>
-    </AdventagesStyled>
+    </AdvantagesStyled>
   );
 }
