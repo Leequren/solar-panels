@@ -5,13 +5,20 @@ import { ConfigItem } from "./ConfigItem";
 interface IConfiguratorProps {
   idWorkstation: number;
 }
-interface IModule {
+interface IConfigItem {
+  [key: string]: {
+    price: number;
+    countUsb: number;
+  };
+}
+
+export interface IModule {
   price: number;
   description: string[];
   config?: {
     [key: string]: {
-      price: number;
-      countUsb: number;
+      desc: string;
+      configOptions: IConfigItem;
     };
   };
 }
@@ -57,6 +64,9 @@ const StyledDescription = styled.p`
   font-size: 26px;
   margin-bottom: 15px;
 `;
+const DescriptionContainer = styled.div`
+  margin-bottom: 50px;
+`;
 export const Configurator: FC = () => {
   const workStation: IWorkstationInfo = {
     name: "Кемпинг версия",
@@ -73,17 +83,22 @@ export const Configurator: FC = () => {
       description: ["123", "123"],
       price: 15000,
       config: {
-        "1": {
-          price: 2000,
-          countUsb: 1,
-        },
-        "2": {
-          price: 5000,
-          countUsb: 2,
-        },
-        "3": {
-          price: 6000,
-          countUsb: 3,
+        usb: {
+          desc: "Количество usb-портов",
+          configOptions: {
+            "1": {
+              price: 2000,
+              countUsb: 1,
+            },
+            "2": {
+              price: 5000,
+              countUsb: 2,
+            },
+            "3": {
+              price: 6000,
+              countUsb: 3,
+            },
+          },
         },
       },
     },
@@ -91,21 +106,29 @@ export const Configurator: FC = () => {
       description: ["123", "123"],
       price: 15000,
       config: {
-        "1": {
-          price: 2000,
-          countUsb: 1,
-        },
-        "2": {
-          price: 5000,
-          countUsb: 2,
-        },
-        "3": {
-          price: 6000,
-          countUsb: 3,
+        usb: {
+          desc: "Количество usb-портов",
+          configOptions: {
+            "1": {
+              price: 2000,
+              countUsb: 1,
+            },
+            "2": {
+              price: 5000,
+              countUsb: 2,
+            },
+            "3": {
+              price: 6000,
+              countUsb: 3,
+            },
+          },
         },
       },
     },
-    jumpStarterModule: { description: ["123", "123"], price: 15000 },
+    jumpStarterModule: {
+      description: ["123", "123", "123", "123"],
+      price: 15000,
+    },
     universalVoltageModule: { description: ["123", "123"], price: 15000 },
     solarPanelModule: { description: ["123", "123"], price: 15000 },
     solarTrackerModule: { description: ["123", "123"], price: 15000 },
@@ -119,9 +142,12 @@ export const Configurator: FC = () => {
     <ContentWrapper>
       <StyledContainer>
         <Header>{workStation.name}</Header>
-        {workStation.description.map((desc) => (
-          <StyledDescription>{desc}</StyledDescription>
-        ))}
+        <DescriptionContainer>
+          {workStation.description.map((desc) => (
+            <StyledDescription>{desc}</StyledDescription>
+          ))}
+        </DescriptionContainer>
+
         {moduleKeys.map((key) => (
           <ConfigItem
             key={key}
