@@ -2,7 +2,7 @@ import { Contacts } from "./Contacts/Contacts.tsx";
 import styled from "styled-components";
 import { MainInfo } from "./MainInfo/MainInfo";
 import { CompanyInfo } from "./CompanyInfo/CompanyInfo";
-import {useWindowWidth} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
+import {useWindowDimensions} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
 import {CompanyInfoSvg} from "@/components/footer/CompanyInfo/CompanySvg.tsx";
 
 const FooterStyled = styled.div`
@@ -16,6 +16,7 @@ const FooterStyled = styled.div`
     padding-right: 150px;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 160px;
     @media (max-width: 1700px) {
         padding-left: 50px;
         padding-right: 50px;
@@ -28,6 +29,12 @@ const FooterStyled = styled.div`
         padding: 20px 15px;
         flex-direction: column;
         height: 100%;
+    }
+    @media (max-width: 800px) {
+        margin-top: 100px;
+    }
+    @media (max-width: 500px) {
+        margin-top: 50px;
     }
 `;
 
@@ -51,8 +58,10 @@ const FooterContactsContainer = styled.div`
 
 export function Footer() {
 
-    const isMobile = useWindowWidth() < 1150
-    const isBig = useWindowWidth() > 600
+    // @ts-ignore
+    const isMobile = useWindowDimensions().width < 1150
+    // @ts-ignore
+    const isBig = useWindowDimensions().width > 600
 
     return isMobile ? (
         <FooterStyled>

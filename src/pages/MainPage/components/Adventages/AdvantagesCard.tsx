@@ -11,12 +11,10 @@ const AdvantagesCardStyled = styled.div<Partial<AdvantageCardProps>>`
     flex-direction: column;
     gap: 20px;
     height: 256px;
-    width: 790px;
+    max-width: 790px;
     box-shadow: 0 0 20px 0 #0000001c;
     border-radius: 10px;
-    padding-left: 60px;
-    padding-bottom: 30px;
-    padding-top: 36px;
+    padding: 36px 126px 30px 60px;
     background: url(${props => props.bgImage}) no-repeat bottom right 83px;
 
     > h1 {
@@ -25,28 +23,29 @@ const AdvantagesCardStyled = styled.div<Partial<AdvantageCardProps>>`
     }
 
     @media (max-width: 1650px) {
-        width: 700px;
+        padding-right: 0;
+        max-width: 700px;
         background-size: auto 200px;
     }
     @media (max-width: 1500px) {
-        width: 550px;
+        max-width: 550px;
         height: 220px;
         background-size: auto 180px;
     }
     @media (max-width: 1200px) {
-        width: 750px;
+        max-width: 750px;
         height: 250px;
     }
     @media (max-width: 850px) {
         background-size: auto 160px;
-        width: 650px;
+        max-width: 650px;
         height: 200px;
         gap: 10px;
         padding-top: 25px;
     }
     @media (max-width: 700px) {
         height: 170px;
-        width: 450px;
+        max-width: 450px;
         background: url(${props => props.bgImage}) no-repeat bottom right 39px;
         background-size: auto 130px;
         > h1 {
@@ -54,12 +53,14 @@ const AdvantagesCardStyled = styled.div<Partial<AdvantageCardProps>>`
         }
     }
     @media (max-width: 500px) {
-        height: 118px;
-        width: 363px;
+        max-height: 118px;
+        max-width: 363px;
         background-size: auto 100px;
         padding-top: 16px;
+        padding-left: 40px;
         > h1 {
             font-size: 16px;
+            max-width: 250px;
         }
     }
 
@@ -99,9 +100,11 @@ const AdvantagesCardUlStyled = styled.ul`
         }
     }
     @media (max-width: 500px) {
+        max-width: 280px;
         gap: 0;
         > li {
             font-size: 13px;
+            max-width: 280px;
         }
     }
 `

@@ -42,6 +42,48 @@ const FAQsStyled = styled.div`
         padding-bottom: 27px;
         padding-right: 40px;
     }
+
+    @media (max-width: 800px) {
+        border-top: 2px solid black;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        h1 {
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 16px;
+            padding-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        > div > svg {
+            width: 25px;
+            height: 10px;
+        }
+    }  
+    @media (max-width: 500px) {
+
+        border-top: 1px solid black;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        h1 {
+            font-size: 13px;
+        }
+
+        p {
+            font-size: 13px;
+            padding-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        > div > svg {
+            width: 16px;
+            height: 7px;
+        }
+    }
 `;
 
 export const FAQs: FC<FAQsProps> = ({ FAQs }) => {

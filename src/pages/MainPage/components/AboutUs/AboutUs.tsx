@@ -9,54 +9,109 @@ interface AboutUsProps {
 }
 
 const AboutUsStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 80px;
-  padding-left: 210px;
-  padding-right: 150px;
-  padding-top: 170px;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    padding-left: 210px;
+    padding-right: 150px;
+    margin-top: 170px;
+    align-items: center;
+    justify-content: center;
 
-  > img {
-    height: 516px;
-    width: 744px;
-    border-radius: 35px;
-  }
+    > img {
+        max-width: 60%;
+        border-radius: 35px;
+    }
+
+    @media (max-width: 1650px) {
+        padding-left: 10%;
+        padding-right: 10%;
+        flex-direction: column-reverse;
+        > img {
+            max-width: 90%;
+        }
+    }
+    @media (max-width: 800px) {
+        margin-top: 100px;
+        gap: 40px;
+    }
+    @media (max-width: 500px) {
+        margin-top: 50px;
+        gap: 25px;
+        > img {
+            max-width: 95%;
+        }
+
+    }
 `;
 
 const AboutUsContentStyled = styled.div<Partial<AboutUsProps>>`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
-  background: url(${(props) => props.bgUrl}) no-repeat right bottom;
-  height: 395px;
-  width: 625px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    background: url(${(props) => props.bgUrl}) no-repeat right bottom;
+    width: 625px;
 
-  > h1 {
-    font-size: 60px;
-    font-weight: 500;
-  }
+    > h1 {
+        font-size: 60px;
+        font-weight: 500;
+    }
 
-  > p {
-    font-size: 26px;
-    font-weight: 500;
-    color: #48494b;
-    padding-bottom: 20px;
-  }
+    > p {
+        font-size: 26px;
+        font-weight: 500;
+        color: #48494b;
+        padding-bottom: 20px;
+    }
 
-  > button {
-    width: 180px;
-    height: 70px;
-    padding: 19px 40px;
-    font-size: 26px;
-    font-weight: 500;
-    background-color: black;
-    color: white;
-    border-radius: 100px;
-  }
+    > button {
+        padding: 19px 40px;
+        font-size: 26px;
+        font-weight: 500;
+        background-color: black;
+        color: white;
+        border-radius: 100px;
+    }
+
+    @media (max-width: 1650px) {
+        width: 100%;
+        background-position-x: 100%;
+        background-size: 300px, 100%;
+    }
+    @media (max-width: 800px) {
+        background-size: 200px 100%;
+        > h1 {
+            font-size: 45px;
+        }
+
+        > p {
+            font-size: 20px;
+        }
+
+        > button {
+            padding: 15px 35px;
+            font-size: 22px;
+        }
+    }
+    @media (max-width: 500px) {
+        gap: 15px;
+        background-size: 100px 100%;
+        > h1 {
+            font-size: 20px;
+        }
+
+        > p {
+            font-size: 19px;
+        }
+
+        > button {
+            font-size: 16px;
+            padding: 10px 25px;
+        }
+
+    }
 `;
 
 export function AboutUs({ title, description, imgUrl, bgUrl }: AboutUsProps) {

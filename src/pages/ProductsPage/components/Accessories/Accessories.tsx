@@ -5,10 +5,13 @@ const AccessoriesStyled = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-left: 150px;
-    padding-right: 150px;
     gap: 20px;
     flex-wrap: wrap;
+    margin-top: 50px;
+    @media (max-width: 500px) {
+        margin-top: 15px;
+        gap: 10px;
+    }
 `
 
 export function Accessories() {

@@ -1,7 +1,7 @@
 import {MainButton} from "./MainButton";
 import styled from "styled-components";
 import React from "react";
-import {useWindowWidth} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
+import {useWindowDimensions} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
 
 interface MainInfoProps {
     isOneColumn?: boolean
@@ -24,7 +24,8 @@ const Column = styled.div`
 `;
 
 export const MainInfo: React.FC<MainInfoProps> = ({isOneColumn}) => {
-    const isMobile = useWindowWidth() < 1150
+    // @ts-ignore
+    const isMobile = useWindowDimensions().width < 1150
 
     return isMobile ? (
 

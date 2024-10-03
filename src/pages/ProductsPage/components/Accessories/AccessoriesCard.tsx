@@ -11,8 +11,9 @@ const AccessoriesCardStyled = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 390px;
+    max-width: 390px;
     margin-top: 30px;
+    gap: 7px;
 
     > img {
         width: 390px;
@@ -29,6 +30,30 @@ const AccessoriesCardStyled = styled.div`
         width: 100%;
         color: black;
     }
+
+    @media (max-width: 800px) {
+        max-width: 270px;
+        > img {
+            width: 270px;
+            height: 250px;
+            border-radius: 15px;
+        }
+
+        > button {
+            font-size: 35px;
+        }
+    }
+    @media (max-width: 500px) {
+        max-width: 177px;
+        > img {
+            width: 177px;
+            height: 160px;
+        }
+
+        > button {
+            font-size: 20px;
+        }
+    }
 `
 
 const AccessoriesCardTitle = styled.div`
@@ -44,6 +69,30 @@ const AccessoriesCardTitle = styled.div`
     > span {
         font-family: Jost, sans-serif;
         font-size: 28px;
+    }
+
+    @media (max-width: 800px) {
+        gap: 7px;
+
+        > h1 {
+            font-size: 20px;
+            color: black;
+        }
+
+        > span {
+            font-size: 22px;
+        }
+    }
+    @media (max-width: 500px) {
+        gap: 5px;
+        > h1 {
+            font-size: 13px;
+        }
+
+        > span {
+            font-size: 16px;
+        }
+
     }
 `
 

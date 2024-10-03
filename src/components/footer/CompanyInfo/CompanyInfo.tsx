@@ -1,6 +1,6 @@
 import SolarPanel from "../../../assets/img/SolarPanelFooter.svg?react";
 import styled from "styled-components";
-import {useWindowWidth} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
+import {useWindowDimensions} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
 
 const Text = styled.div`
     font-family: Jost, sans-serif;
@@ -29,7 +29,8 @@ const Text = styled.div`
 
 export function CompanyInfo() {
 
-    const isMobile = useWindowWidth() < 1150
+    // @ts-ignore
+    const isMobile = useWindowDimensions().width < 1150
 
     return isMobile ? (
         <Text>

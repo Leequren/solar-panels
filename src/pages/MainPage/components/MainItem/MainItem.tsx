@@ -16,14 +16,14 @@ const MainItemStyled = styled.div`
     align-items: center;
     justify-content: center;
     gap: 115px;
-    padding-top: 144px;
+    margin-top: 144px;
     padding-left: 150px;
     padding-right: 150px;
 
     > img {
         border-radius: 35px;
         height: 100%;
-        width: 100%;
+        width: 865px;
     }
 
     @media (max-width: 1650px) {
@@ -57,11 +57,11 @@ const MainItemStyled = styled.div`
     }
     @media (max-width: 850px) {
         flex-direction: column;
-        padding-top: 47px;
+        margin-top: 47px;
     }
     @media (max-width: 500px) {
         > img {
-            width: 363px;
+            width: 340px;
         }
     }
 `;

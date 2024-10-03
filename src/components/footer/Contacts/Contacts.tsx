@@ -4,7 +4,7 @@ import Email from "../../../assets/img/EmailIcon.svg?react";
 import Address from "../../../assets/img/AddressIcon.svg?react";
 import {FC, SVGProps} from "react";
 import styled from "styled-components";
-import {useWindowWidth} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
+import {useWindowDimensions} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
 
 
 interface contactsProps {
@@ -40,7 +40,8 @@ const ContactsStyled = styled.div`
 `
 
 export const Contacts: FC<contactsProps> = ({id}) => {
-    let isMobile = useWindowWidth() < 1150
+    // @ts-ignore
+    let isMobile = useWindowDimensions().width < 1150
 
     return isMobile ? (
         <ContactsStyled>

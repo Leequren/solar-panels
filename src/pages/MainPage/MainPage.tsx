@@ -32,7 +32,7 @@ export const MainPage: FC = () => {
           'Мы представители молодой, быстроразвивающейся компании ООО "ГелиоТрек". Основной вид деятельности направлен на создание эффективного источника энергии для подзарядки устройств.'
         }
         imgUrl={"/img/AboutUsImg.png"}
-        bgUrl={"/img/AboutUsIcon.svg"}
+        bgUrl={"/src/assets/img/AboutUsIcon.svg"}
         path={""}
       />
       <FAQ title={"FAQs"} description={"Часто задаваемые вопросы"} />

@@ -7,8 +7,30 @@ interface FAQProps {
     description: string
 }
 
+const FaqWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    
+    @media (max-width: 800px) {
+        margin-top: 100px;
+    }
+    @media (max-width: 500px) {
+        margin-top: 50px;
+    }
+`
+
 const FAQsStyled = styled.div`
-    padding: 160px 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    width: 90%;
+    @media (max-width: 800px) {
+        gap: 35px;
+    }
+    @media (max-width: 500px) {
+        gap: 25px;
+    }
 `;
 
 const FAQTitle = styled.div`
@@ -17,8 +39,6 @@ const FAQTitle = styled.div`
     justify-content: center;
     align-items: center;
     gap: 15px;
-    padding-bottom: 55px;
-
 
     > h1 {
         font-size: 60px;
@@ -30,37 +50,64 @@ const FAQTitle = styled.div`
         font-weight: 500;
         color: #48494B;
     }
+    
+    @media (max-width: 800px) {
+        gap: 10px;
+        
+        > h1 {
+            font-size: 40px;
+        }
+        > p {
+            font-size: 20px;
+        }
+    }    
+    @media (max-width: 500px) {
+        gap: 13px;
+        
+        > h1 {
+            font-size: 20px;
+        }
+        > p {
+            font-size: 13px;
+        }
+    }
 `;
 
 const FAQss = [
 
     {
-        question: 'Как рассчитать стоимость?', answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
+        question: 'Как рассчитать стоимость?',
+        answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
     },
     {
-        question: 'Как рассчитать стоимость?', answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
+        question: 'Как рассчитать стоимость?',
+        answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
     },
     {
-        question: 'Как рассчитать стоимость?', answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
+        question: 'Как рассчитать стоимость?',
+        answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
     },
     {
-        question: 'Как рассчитать стоимость?', answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
+        question: 'Как рассчитать стоимость?',
+        answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
     },
     {
-        question: 'Как рассчитать стоимость?', answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
+        question: 'Как рассчитать стоимость?',
+        answer: 'Рассчитать стоимость можно в корзине, после выбора интересующей продукции в разделе “Каталог”'
     },
 
 ];
 
 export const FAQ: React.FC<FAQProps> = ({title, description}: FAQProps) => {
     return (
-        <FAQsStyled>
-            <FAQTitle>
-                <h1>{title}</h1>
-                <p>{description}</p>
-            </FAQTitle>
-            <FAQs FAQs={FAQss}/>
-        </FAQsStyled>
-
+        <FaqWrapper>
+            <FAQsStyled>
+                <FAQTitle>
+                    <h1>{title}</h1>
+                    <p>{description}</p>
+                </FAQTitle>
+                <FAQs FAQs={FAQss}/>
+            </FAQsStyled>
+        </FaqWrapper>
     );
 };

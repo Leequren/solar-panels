@@ -7,33 +7,14 @@ const ProductsCardStyled = styled.div`
     align-items: center;
     justify-content: center;
     gap: 80px;
-    padding: 150px 185px 200px;
-`
 
-const ButtonContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 75px;
-    height: 70px;
-    width: 648px;
-    border-radius: 100px;
-    border: 1px solid black;
-`
-
-const Button1 = styled.button`
-    font-size: 30px;
-    font-weight: 500;
-    background: transparent;
-    border: none;
-`
-
-const Button2 = styled.button`
-    font-size: 30px;
-    font-weight: 500;
-    background: transparent;
-    border: none;
-`
+    margin-top: 80px;
+    @media (max-width: 800px) {
+        margin-top: 40px;
+        margin-bottom: 45px;
+        gap: 45px;
+    }
+`;
 
 const ProductsCardContainer = styled.div`
     display: grid;
@@ -42,8 +23,14 @@ const ProductsCardContainer = styled.div`
     justify-content: center;
     grid-row-gap: 40px;
     grid-column-gap: 20px;
-    //flex-wrap: wrap;
-`
+    @media (max-width: 1580px) {
+        grid-template-columns: repeat(1, auto);
+    }
+
+    @media (max-width: 400px) {
+        padding: 5px 5px 0;
+    }
+`;
 
 const products = [
     {description: 'Модуль быстрой зарядки для телефона', iconUrl: '/src/assets/img/ChargeBatteryIcon.svg'},
@@ -54,15 +41,11 @@ const products = [
     {description: 'Солнечная панель', iconUrl: '/src/assets/img/NoCO2Icon.svg'},
     {description: 'Модуль powerbank', iconUrl: '/src/assets/img/PowerBankIcon.svg'},
     {description: 'Установка с гелиотрекером', iconUrl: '/src/assets/img/GpsIcon.svg'}
-]
+];
 
 export function ProductsCard() {
     return (
         <ProductsCardStyled>
-            <ButtonContainer>
-                <Button1>Готовые сборки</Button1>
-                <Button2>Комплектующие</Button2>
-            </ButtonContainer>
             <ProductsCardContainer>
                 <ProductsCardItem title={'Походная версия'}
                                   products={products}
@@ -73,8 +56,7 @@ export function ProductsCard() {
                 <ProductsCardItem title={'Походная версия'}
                                   products={products}
                                   price={65000} imgUrl={'/img/MainSolarPanelImg.png'} path={'/'}/>
-
             </ProductsCardContainer>
         </ProductsCardStyled>
-    )
+    );
 }

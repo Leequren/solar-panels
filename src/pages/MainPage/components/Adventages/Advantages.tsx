@@ -12,18 +12,18 @@ const AdvantagesStyled = styled.div`
     align-items: center;
     justify-content: center;
     gap: 60px;
-    padding-top: 150px;
+    margin-top: 150px;
     
     @media (max-width: 1200px) {
-        padding-top: 100px;
+        margin-top: 100px;
         gap: 30px;
     }
     @media (max-width: 700px) {
-        padding-top: 80px;
+        margin-top: 80px;
         gap: 25px;
     }
     @media (max-width: 500px) {
-        padding-top: 50px;
+        margin-top: 50px;
     }
 
 `;
@@ -54,7 +54,7 @@ const TitleStyled = styled.div`
     > p {
         font-size: 26px;
         font-weight: 500;
-        width: 740px;
+        max-width: 740px;
         text-align: center;
         color: #48494b;
     }
