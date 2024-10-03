@@ -4,10 +4,16 @@ import Email from "../../../assets/img/EmailIcon.svg?react";
 import Address from "../../../assets/img/AddressIcon.svg?react";
 import {FC, SVGProps} from "react";
 import styled from "styled-components";
+import {useWindowWidth} from "@/hoocks/useWindowSize/useWindowWidth.tsx";
+
+
+interface contactsProps {
+    id?: number
+}
 
 interface IContactItem {
-    name: string;
-    Icon: FC<SVGProps<SVGSVGElement>>
+    name: string,
+    Icon?: FC<SVGProps<SVGSVGElement>>
 }
 
 const contactItems: IContactItem[] = [
@@ -33,8 +39,18 @@ const ContactsStyled = styled.div`
     gap: 37px;
 `
 
-export function Contacts() {
-    return (
+export const Contacts: FC<contactsProps> = ({id}) => {
+    let isMobile = useWindowWidth() < 1150
+
+    return isMobile ? (
+        <ContactsStyled>
+            {id !== undefined && id >= 0 && id < contactItems.length ? (
+                <ContactsItem key={id} name={contactItems[id].name}/>
+            ) : (
+                <div>Контакт не найден</div>
+            )}
+        </ContactsStyled>
+    ) : (
         <ContactsStyled>
             {contactItems.map((item, index) => (
                 <ContactsItem key={index} {...item} />

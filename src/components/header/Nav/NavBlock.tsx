@@ -31,13 +31,15 @@ const BurgerMenu = styled.div`
     position: relative;
     justify-content: center;
     align-items: flex-start;
-`
+    padding: 10px;
+    cursor: pointer;
+`;
 
 const BurgerMenuItem = styled.div`
     display: flex;
     position: absolute;
     top: 40px;
-    right: -30px;
+    right: -20px;
     left: auto;
     bottom: auto;
     flex-direction: column;
