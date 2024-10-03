@@ -3,7 +3,7 @@ import { NavBlock } from "./NavBlock.tsx";
 
 export function Nav() {
     const windowWidth = useWindowWidth()
-    const isMobile = windowWidth < 850
+    const isMobile = windowWidth <= 850
 
     return (
         <NavBlock IsMobile={isMobile} />
