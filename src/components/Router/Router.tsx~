@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
     element: <Configurator />,
   },
   {
-    path: routes.cardItemPage,
+    path: routes.configurator,
     element: <CardItemPage />,
   }
 ]);
