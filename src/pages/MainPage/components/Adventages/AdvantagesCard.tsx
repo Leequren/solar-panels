@@ -10,11 +10,11 @@ const AdvantagesCardStyled = styled.div<Partial<AdvantageCardProps>>`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 256px;
-    max-width: 790px;
+    max-height: 256px;
+    width: 790px;
     box-shadow: 0 0 20px 0 #0000001c;
     border-radius: 10px;
-    padding: 36px 126px 30px 60px;
+    padding: 36px 0 30px 60px;
     background: url(${props => props.bgImage}) no-repeat bottom right 83px;
 
     > h1 {

@@ -1,10 +1,10 @@
-import { App } from "@/App";
 import { routes } from "@/const/routes";
 import { MainPage } from "@/pages/MainPage/MainPage";
 import { Configurator } from "@/pages/ProductsPage/components/Configurator/Configurator";
 import { ProductsPage } from "@/pages/ProductsPage/ProductsPage";
 import { createBrowserRouter } from "react-router-dom";
-import {CardItemPage} from "@/pages/CardItemPage/CardItemPage.tsx";
+import {ProductsCardInfoPage} from "@/pages/ProductsCardInfoPage/ProductsCardInfoPage.tsx";
+import {CartPage} from "@/pages/CartPage/CartPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +20,11 @@ export const router = createBrowserRouter([
     element: <Configurator />,
   },
   {
-    path: routes.cardItemPage,
-    element: <CardItemPage />,
+    path: routes.productsCardInfo,
+    element: <ProductsCardInfoPage />,
+  },
+  {
+    path: routes.cart,
+    element: <CartPage />,
   }
 ]);

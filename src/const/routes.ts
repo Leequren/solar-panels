@@ -2,5 +2,6 @@ export enum routes {
   main = "/",
   products = "/products",
   configurator = "/products/configurator/",
-  cardItemPage = "/cardItemPage"
+  productsCardInfo = "/ProductsCardInfoPage",
+  cart = "/cart"
 }
