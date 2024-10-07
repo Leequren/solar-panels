@@ -10,9 +10,9 @@ export enum backendRoutes {
   getFaqs = "/api/faqs/",
   getMainWorkstation = "/api/workstation/getMain/",
   getPreviewCatalogWorkstations = "/api/workstations/getPreviewCatalog/",
-  getWorkstations = "/api/workstations/",
+  getCatalogWorkstations = "/api/workstations/catalog",
+  getWorkstation = "/api/workstations/getWorkstationById/",
   getParts = "/api/parts/",
   getPartInfo = "/api/parts/getById/",
-  getWorkstation = "/api/workstations/getWorkstationById/",
   postOrder = "/api/order/",
 }
