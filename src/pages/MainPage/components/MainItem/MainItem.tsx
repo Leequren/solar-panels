@@ -24,6 +24,7 @@ const MainItemStyled = styled.div`
         border-radius: 35px;
         height: 100%;
         width: 865px;
+        object-fit: cover;
     }
 
     @media (max-width: 1650px) {

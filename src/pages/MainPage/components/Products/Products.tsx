@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import {ProductsCard} from "./ProductsCard";
-import {FC} from "react";
+import {FC, useEffect} from "react";
+import {usePreviewCatalogStore} from "@/store/previewCatalogStore.ts";
 
 interface ProductsProps {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 const ProductsStyled = styled.div`
@@ -71,7 +72,7 @@ const ProductsCardContainerWrapperStyled = styled.div`
     display: flex;
     justify-content: center;
     overflow-y: hidden;
-    max-width:100%;
+    max-width: 100%;
 `
 const ProductsCardContainerStyled = styled.div`
     display: flex;
@@ -95,59 +96,41 @@ const ProductsCardContainerStyled = styled.div`
         background-color: #48494b;
         border-radius: 20px;
     }
-    
+
     @media (max-width: 500px) {
         padding-bottom: 30px;
     }
 `;
 
 export const Products: FC<ProductsProps> = ({title, description}) => {
-    return (
-        <ProductsStyled>
-            <ProductsTitleStyled>
-                <h1>{title}</h1>
-                <p>{description}</p>
-            </ProductsTitleStyled>
-            <ProductsCardContainerWrapperStyled>
-            <ProductsCardContainerStyled>
-                <ProductsCard
-                    ImgUrl={"/img/ProductsCardImage1.png"}
-                    title={"Мощность подключаемых уст-в до 80 Вт."}
-                    description={
-                        "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
-                    }
-                    price={65000}
-                    path={"/products"}
-                />
-                <ProductsCard
-                    ImgUrl={"/img/ProductsCardImage2.png"}
-                    title={"Мощность подключаемых уст-в до 80 Вт."}
-                    description={
-                        "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
-                    }
-                    price={65000}
-                    path={"/products"}
-                />
-                <ProductsCard
-                    ImgUrl={"/img/ProductsCardImage3.png"}
-                    title={"Мощность подключаемых уст-в до 80 Вт."}
-                    description={
-                        "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
-                    }
-                    price={65000}
-                    path={"/products"}
-                />
-                <ProductsCard
-                    ImgUrl={"/img/ProductsCardImage3.png"}
-                    title={"Мощность подключаемых уст-в до 80 Вт."}
-                    description={
-                        "Два USB порта для быстрой зарядки смартфона, один универсальный настраиваемый разъём."
-                    }
-                    price={65000}
-                    path={"/products"}
-                />
-            </ProductsCardContainerStyled>
-            </ProductsCardContainerWrapperStyled>
-        </ProductsStyled>
-    );
+
+  const previewCatalogStore = usePreviewCatalogStore();
+
+  useEffect(() => {
+    previewCatalogStore.fetch();
+    console.log(previewCatalogStore.previewCatalog);
+  }, []);
+
+  return (
+    <ProductsStyled>
+      <ProductsTitleStyled>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </ProductsTitleStyled>
+      <ProductsCardContainerWrapperStyled>
+        <ProductsCardContainerStyled>
+          {/* Делаем map по previewCatalogStore.previewCatalog */}
+          {previewCatalogStore.previewCatalog.map((product) => (
+            <ProductsCard
+              key={product.id} // Используем уникальный id для ключа
+              ImgUrl={'/img/ProductsCardImage1.png'} // URL изображения
+              description={product.description} // Описание
+              price={product.defaultPrice} // Цена
+              path={product.path} // Путь для кнопки
+            />
+          ))}
+        </ProductsCardContainerStyled>
+      </ProductsCardContainerWrapperStyled>
+    </ProductsStyled>
+  );
 };

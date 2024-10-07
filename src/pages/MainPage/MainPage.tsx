@@ -3,18 +3,27 @@ import { Advantages } from "./components/Adventages/Advantages";
 import { Products } from "./components/Products/Products";
 import { AboutUs } from "./components/AboutUs/AboutUs";
 import { FAQ } from "./components/FAQ/FAQ";
-import { FC } from "react";
+import {FC, useEffect} from "react";
+import {useMainItemStore} from "@/store/mainItemStore.ts";
 
 export const MainPage: FC = () => {
+
+    const mainItemStore = useMainItemStore();
+
+    useEffect(() => {
+        mainItemStore.fetch();
+        console.log(mainItemStore.mainItems)
+    }, []);
+
   return (
     <div>
       <MainItem
-        title={"Мобильная солнечная станция"}
-        description={"Долговечный и экологически чистый источник энергии"}
+        title={mainItemStore.mainItems.name}
+        description={mainItemStore.mainItems.description}
         img={"/img/MainSolarPanelImg.png"}
-        weight={"7,6"}
-        power={"80"}
-        size={"43х34х15"}
+        weight={mainItemStore.mainItems.weight}
+        power={mainItemStore.mainItems.power}
+        size={mainItemStore.mainItems.size}
       />
       <Advantages
         title={"Что вы получите"}

@@ -18,19 +18,11 @@ const ProductsCardStyled = styled.div`
         border-radius: 15px;
         object-fit: cover;
     }
-
-    > h1 {
-        font-family: Jost, sans-serif;
-        padding-top: 20px;
-        padding-bottom: 7px;
-        font-size: 20px;
-        font-weight: 400;
-        color: #48494B;
-    }
-
+    
     > p {
         font-family: Jost, sans-serif;
         padding-bottom: 10px;
+        padding-top: 20px;
         font-size: 20px;
         font-weight: 400;
         color: #48494B;
@@ -60,10 +52,6 @@ const ProductsCardStyled = styled.div`
             height: 350px;
         }
 
-        > h1 {
-            font-size: 18px;
-        }
-
         > p {
             font-size: 18px;
         }
@@ -80,12 +68,8 @@ const ProductsCardStyled = styled.div`
             height: 200px;
         }
 
-        > h1 {
-            font-size: 16px;
-        }
-
         > p {
-            display: none;
+            padding-top: 10px;
         }
 
         > span {
@@ -100,10 +84,6 @@ const ProductsCardStyled = styled.div`
             height: 150px;
         }
 
-        > h1 {
-            font-size: 13px;
-        }
-
         > span {
             font-size: 16px;
             
@@ -115,11 +95,10 @@ const ProductsCardStyled = styled.div`
     }
 `;
 
-export function ProductsCard({title, description, price, path, ImgUrl}: ProductsCardProps) {
+export function ProductsCard({description, price, ImgUrl}: ProductsCardProps) {
     return (
         <ProductsCardStyled>
             <img src={ImgUrl} alt=''/>
-            <h1>{title}</h1>
             <p>{description}</p>
             <span>Цена: {price} рублей</span>
             <button>Подробнее</button>

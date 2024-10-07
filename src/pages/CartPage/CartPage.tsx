@@ -8,6 +8,10 @@ const CartPageStyled = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 120px;
+    
+    @media (max-width: 1650px) {
+        margin-top: 30px;
+    }
 `
 
 const CartPageStyledWrapper = styled.div`
@@ -18,7 +22,6 @@ const CartPageStyledWrapper = styled.div`
 
 const CartPageTitle = styled.div`
     display: flex;
-    //justify-content: center;
 
     > h1 {
         font-size: 60px;
@@ -30,8 +33,12 @@ const CartPageTitle = styled.div`
 
 const CartPageComponentsContainer = styled.div`
     display: flex;
-    //justify-content: center;
     gap: 20px;
+    
+    @media (max-width: 1650px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 export function CartPage() {
@@ -44,7 +51,7 @@ export function CartPage() {
                 </CartPageTitle>
                 <CartPageComponentsContainer>
                     <CartProducts/>
-                    <CartPayments/>
+                    <CartPayments price={10000}/>
                 </CartPageComponentsContainer>
             </CartPageStyledWrapper>
         </CartPageStyled>

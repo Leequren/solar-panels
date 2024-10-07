@@ -63,7 +63,7 @@ export const NavBlock: React.FC<NavBlockProps> = ({IsMobile}) => {
         <NavItem name="Контакты" path="#ContactsItem"/>
         <NavItem
             name="Каталог"
-            path="#Cart"
+            path={routes.cart}
             counter={10}
             isCart
             imgUrl="/img/cartIcon.png"
@@ -74,7 +74,7 @@ export const NavBlock: React.FC<NavBlockProps> = ({IsMobile}) => {
         <NavStyledMobile>
                 <NavItem
                     name="Каталог"
-                    path="#Cart"
+                    path={routes.cart}
                     counter={10}
                     isCart
                     imgUrl="/img/cartIcon.png"

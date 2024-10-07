@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import ArrowRight from '../../../assets/img/ArrowRight.svg?react'
 
+interface ICartPaymentsProps {
+    price: number
+}
+
 const CartPaymentsStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -10,11 +14,22 @@ const CartPaymentsStyled = styled.div`
     height: 100%;
     width: 595px;
     border-radius: 15px;
+    
+    @media (max-width: 1150px) {
+        background-color: white;
+        width: 100%;
+        padding: 0;
+    }
 `
 
 const CardPaymentsTitle = styled.div`
     font-size: 35px;
     font-weight: 500;
+    
+    @media (max-width: 1150px) {
+        font-size: 20px;
+        font-weight: 400;
+    }
 `
 
 const CardPaymentsPriceWrapper = styled.div`
@@ -27,6 +42,10 @@ const CardPaymentsPriceContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
+    @media (max-width: 1150px) {
+        gap: 15px;
+    }
 `
 
 const CardPaymentsButton = styled.div`
@@ -36,6 +55,12 @@ const CardPaymentsButton = styled.div`
     border-radius: 100px;
     padding: 18px 45px;
     font-size: 30px;
+
+    @media (max-width: 1150px) {
+        font-size: 13px;
+        font-weight: 400;
+        padding: 12px 25px;
+    }
 `
 
 const CartPaymentsPrice = styled.div`
@@ -53,6 +78,19 @@ const CartPaymentsPrice = styled.div`
         font-size: 26px;
         font-weight: 400;
     }
+    
+    @media (max-width: 1150px) {
+        
+        .title{
+            font-size: 13px;
+            font-weight: 300;
+        }
+        
+        .value{
+            font-size: 13px;
+            font-weight: 300;
+        }
+    }
 `
 
 const CartPaymentsDiscount = styled.div`
@@ -69,6 +107,19 @@ const CartPaymentsDiscount = styled.div`
         font-family: Jost, sans-serif;
         font-size: 26px;
         font-weight: 400;
+    }
+    
+    @media (max-width: 1150px) {
+        
+        .title{
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        .value{
+            font-size: 13px;
+            font-weight: 300;
+        }
     }
 `
 
@@ -104,11 +155,25 @@ const CartPaymentsPromo = styled.div`
         cursor: pointer;
         margin-left: 10px;
     }
+
+    @media (max-width: 1150px) {
+
+        > input {
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        > button {
+            width: 30px;
+            height: 30px;
+        }
+    }
 `
 
 const CartPaymentsTotalPrice = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 5px;
 
     .title {
         font-size: 26px;
@@ -120,9 +185,25 @@ const CartPaymentsTotalPrice = styled.div`
         font-size: 60px;
         font-weight: 400;
     }
+    
+    @media (max-width: 1150px) {
+        gap: 10px;
+
+        .title{
+            font-size: 13px;
+            font-weight: 300;
+        }
+        
+        .value{
+            font-size: 20px;
+            font-weight: 400;
+        }
+    }
 `
 
-export function CartPayments() {
+export function CartPayments({price}: ICartPaymentsProps) {
+    let promo = price / 10
+    let totalPrice = price - promo
     return (
         <CartPaymentsStyled>
             <CardPaymentsTitle>
@@ -132,11 +213,11 @@ export function CartPayments() {
                 <CardPaymentsPriceContainer>
                     <CartPaymentsPrice>
                         <span className='title'>Стоимость товаров </span>
-                        <span className='value'>48000 ₽</span>
+                        <span className='value'>{price} ₽</span>
                     </CartPaymentsPrice>
                     <CartPaymentsDiscount>
                         <span className='title'>Скидка </span>
-                        <span className='value'>0 ₽</span>
+                        <span className='value'>{promo} ₽</span>
                     </CartPaymentsDiscount>
                     <CartPaymentsPromo>
                         <input type="text" placeholder="Ввести промокод"/>
@@ -146,7 +227,7 @@ export function CartPayments() {
                     </CartPaymentsPromo>
                     <CartPaymentsTotalPrice>
                         <span className='title'>Итого </span>
-                        <span className='value'>48000 ₽</span>
+                        <span className='value'>{totalPrice} ₽</span>
                     </CartPaymentsTotalPrice>
                 </CardPaymentsPriceContainer>
                 <CardPaymentsButton>

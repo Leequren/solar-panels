@@ -10,9 +10,15 @@ const CartProductsStyled = styled.div`
 export function CartProducts() {
     return (
         <CartProductsStyled>
-            <CartProductsItem/>
-            <CartProductsItem/>
-            <CartProductsItem/>
+            <CartProductsItem count={1} title={'Модуль быстрой зарядки телефона'} price={17000}
+                              imgUrl={'/img/MainSolarPanelImg.png'} titleCharacteristics={'Количество USB-портов'}
+                              valueCharacteristics={'2'} type={'W'}/>
+            <CartProductsItem count={1} title={'Модуль быстрой зарядки телефона'} price={17000}
+                              imgUrl={'/img/MainSolarPanelImg.png'} titleCharacteristics={'Количество USB-портов'}
+                              valueCharacteristics={'2'} type={'S'}/>
+            <CartProductsItem count={1} title={'Модуль быстрой зарядки телефона'} price={17000}
+                              imgUrl={'/img/MainSolarPanelImg.png'} titleCharacteristics={'Количество USB-портов'}
+                              valueCharacteristics={'2'} type={'P'}/>
         </CartProductsStyled>
     )
 }
