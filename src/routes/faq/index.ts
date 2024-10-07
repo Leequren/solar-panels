@@ -6,7 +6,7 @@ import {
 } from "./crudFAQ";
 
 export async function setupFaqRoutes(app: FastifyInstance) {
-  app.get("/api/faq", getAllFaqHandler);
-  app.post("/api/faq/create", createFaqHandler);
-  app.post("/api/faq/delete", deleteFaqHandler);
+  app.get("/api/faqs", getAllFaqHandler);
+  // app.post("/api/faq/create", createFaqHandler);
+  // app.post("/api/faq/delete", deleteFaqHandler);
 }

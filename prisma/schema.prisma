@@ -33,8 +33,13 @@ model Cart {
 
 model Workstation {
   id Int @id @default(autoincrement())
+  name String
   images String[]
-
+  defaultPrice Int
+  weight Float
+  power Int
+  size String
+  description String[]
   cartWorkstations Cart_Workstation[]
   quickChargeModule QuickChargeModuleEquip[]
   invertorModule InvertorEquip[]
@@ -44,7 +49,7 @@ model Workstation {
   solarPanelModule SolarPanelEquip[]
   jumpStarter JumpStarterEquip[]
   universalVoltageModule UniversalVoltageEquip[]
-  
+  onMainpage Boolean
   
 }
 model LeadBattery12VChargingEquip {
@@ -122,21 +127,24 @@ model QuickChargeModuleEquip{
 model Cart_Workstation {
   id_cart_workstation Int @id @default(autoincrement())
 
-  cartId Int
-  cart Cart @relation(fields: [cartId], references: [id])
+  cartId Int?
+  cart Cart? @relation(fields: [cartId], references: [id])
 
-  workstationId Int
-  workstation Workstation @relation(fields: [workstationId], references: [id])
+  workstationId Int?
+  workstation Workstation? @relation(fields: [workstationId], references: [id])
 }
 
 model Part {
   id Int @id @default(autoincrement())
   name String
-  descrption String
+  description String[]
   images String[]
-  characteristics Json
+
+  defaultPrice Int
 
   cartPart CartPart[]
+
+  partConfigurations PartConfiguration[]
 
 }
 
@@ -144,17 +152,13 @@ model PartConfiguration {
   id_configuration Int @id @default(autoincrement())
   price Int
   
-  usbConfigrationId Int?
-  usbConfigration UsbConfiguration?
+  keyConfig String
+  valueConfig String
+
+  partId Int?
+  part Part? @relation(fields: [partId], references: [id])
 
   cartPart CartPart[]
-}
-
-model UsbConfiguration {
-  id_usb_configuration Int @id @default(autoincrement())
-  count_usb Int
-  configurationId Int @unique
-  partConfiguration PartConfiguration @relation(fields: [configurationId], references: [id_configuration])
 }
 
 model CartPart {
