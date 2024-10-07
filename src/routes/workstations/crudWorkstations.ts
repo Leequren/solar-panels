@@ -1,5 +1,5 @@
 import { getTokenSourceMapRange } from "typescript";
-import { prisma } from "../../..";
+import { prisma } from "../..";
 
 async function getRawWorkstations() {
   return await prisma.workstation.findMany();
@@ -36,7 +36,14 @@ export async function getMainPageWorkstation() {
 }
 
 export async function getPreviewCatalogWorkstations() {
-  return await prisma.workstation.findMany();
+  return await prisma.workstation.findMany({
+    select: {
+      id: true,
+      description: true,
+      defaultPrice: true,
+      images: true,
+    },
+  });
 }
 
 export async function getCatalogWorkstations() {
@@ -49,3 +56,5 @@ export async function getCatalogWorkstations() {
     },
   });
 }
+
+export async function getWorkstationById() {}

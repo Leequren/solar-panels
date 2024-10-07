@@ -1,5 +1,5 @@
 import { Part, Prisma } from "@prisma/client";
-import { prisma } from "../../..";
+import { prisma } from "../../";
 
 export async function createRawPart(part: Prisma.PartCreateInput) {
   return await prisma.part.create({
@@ -29,7 +29,14 @@ export async function getPartById(id: number) {
 }
 
 export async function getParts() {
-  return await prisma.part.findMany();
+  return await prisma.part.findMany({
+    select: {
+      id: true,
+      name: true,
+      images: true,
+      defaultPrice: true,
+    },
+  });
 }
 
 export async function deletePart(id: number) {

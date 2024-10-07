@@ -9,7 +9,8 @@ export async function getMainWorkstationHandler(
   req: FastifyRequest,
   reply: FastifyReply
 ) {
-  return reply.send({ workstation: getMainPageWorkstation() });
+  const mainWorkstation = await getMainPageWorkstation();
+  return reply.send({ workstation: mainWorkstation });
 }
 
 export async function getPreviewCatalogWorkstationsHandler(

@@ -11,5 +11,5 @@ export async function setupWorkstationRoutes(app: FastifyInstance) {
     getPreviewCatalogWorkstationsHandler
   );
   app.get("/api/workstation/getMain/", getMainWorkstationHandler);
-  app.get("/api/workstations/catalog", getCatalogWorkstationsHandler);
+  app.get("/api/workstations/catalog/", getCatalogWorkstationsHandler);
 }
