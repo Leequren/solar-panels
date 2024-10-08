@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 interface AccessoriesCardProps {
-    title: string;
-    price: number;
-    imgUrl: string;
+  title: string;
+  price: number;
+  imgUrl: string;
 }
 
 const AccessoriesCardStyled = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between; /* Устанавливаем равномерное распределение контента */
     max-width: 390px;
     margin-top: 30px;
     gap: 7px;
@@ -54,16 +54,18 @@ const AccessoriesCardStyled = styled.div`
             font-size: 20px;
         }
     }
-`
+`;
 
 const AccessoriesCardTitle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 70px; /* Минимальная высота для заголовков, чтобы избежать разницы из-за переноса строк */
 
     > h1 {
         font-size: 26px;
         font-weight: 400;
+        white-space: pre-wrap; /* Разрешаем перенос текста */
     }
 
     > span {
@@ -92,19 +94,26 @@ const AccessoriesCardTitle = styled.div`
         > span {
             font-size: 16px;
         }
-
     }
-`
+`;
 
-export function AccessoriesCard({title, price, imgUrl}: AccessoriesCardProps) {
-    return (
-        <AccessoriesCardStyled>
-            <img src={imgUrl} alt=""/>
-            <AccessoriesCardTitle>
-                <h1>{title}</h1>
-                <span>{price} ₽</span>
-            </AccessoriesCardTitle>
-            <button>+</button>
-        </AccessoriesCardStyled>
-    )
+const AccessoriesCardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: stretch; /* Все карточки будут иметь одинаковую высоту */
+`;
+
+export function AccessoriesCard({ title, price, imgUrl }: AccessoriesCardProps) {
+  return (
+    <AccessoriesCardStyled>
+      <img src={imgUrl} alt="" />
+      <AccessoriesCardTitle>
+        <h1>{title}</h1>
+        <span>{price} ₽</span>
+      </AccessoriesCardTitle>
+      <button>+</button>
+    </AccessoriesCardStyled>
+  );
 }

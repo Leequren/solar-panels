@@ -1,5 +1,7 @@
 import {AccessoriesCard} from "./AccessoriesCard.tsx";
 import styled from "styled-components";
+import {usePartsStore} from "@/store/partsStore.ts";
+import {useEffect} from "react";
 
 const AccessoriesStyled = styled.div`
     display: flex;
@@ -12,22 +14,28 @@ const AccessoriesStyled = styled.div`
         margin-top: 15px;
         gap: 10px;
     }
-`
+`;
 
 export function Accessories() {
-    return(
-        <AccessoriesStyled>
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-            <AccessoriesCard title={'Модуль быстрой зарядки для телефона\n'} price={10000} imgUrl={'/img/MainSolarPanelImg.png'} />
-        </AccessoriesStyled>
-    )
+
+  const partsStore = usePartsStore();
+
+  useEffect(() => {
+    partsStore.fetch();
+    console.log(partsStore.parts)
+  }, []);
+
+  return (
+    <AccessoriesStyled>
+      {partsStore.parts.map((part) => (
+        <AccessoriesCard
+          key={part.id}
+          title={part.name}
+          price={part.defaultPrice}
+          imgUrl={'/img/MainSolarPanelImg.png'}
+        />
+      ))
+      }
+    </AccessoriesStyled>
+  )
 }

@@ -119,7 +119,7 @@ const Description = styled.div`
 
         > img {
             max-height: 25px;
-            max-width: 30px;
+            width: 30px;
             border-radius: 15px;
         }
 
@@ -135,7 +135,6 @@ const Description = styled.div`
         grid-template-rows: repeat(8, auto);
         grid-template-columns: repeat(1, auto);
     }
-
 `;
 
 const ButtonContainer = styled.div`

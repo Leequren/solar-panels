@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import {ProductsCardItem} from "./ProductsCardItem.tsx";
+import {ConfiguratorModules} from "@/pages/ProductsPage/components/Configurator/Configurator.tsx";
+import {useCatalogWorkstationsStore} from "@/store/catalogWorkstationsStore.ts";
+import {useEffect} from "react";
 
 const ProductsCardStyled = styled.div`
     display: flex;
@@ -33,30 +36,39 @@ const ProductsCardContainer = styled.div`
 `;
 
 const products = [
-    {description: 'Модуль быстрой зарядки для телефона', iconUrl: '/src/assets/img/ChargeBatteryIcon.svg'},
-    {description: 'Модуль jump starter для автомобиля', iconUrl: '/src/assets/img/JumpStarterIcon.svg'},
-    {description: 'Модуль инвертора 200 Вт', iconUrl: '/src/assets/img/InvertorIcon.svg'},
-    {description: 'Модуль универсальный с регулируемым напряжением', iconUrl: '/src/assets/img/SpeedIcon.svg'},
-    {description: 'Модуль зарядки свинцовых аккумуляторов 12В', iconUrl: '/src/assets/img/BatteryIcon.svg'},
-    {description: 'Солнечная панель', iconUrl: '/src/assets/img/NoCO2Icon.svg'},
-    {description: 'Модуль powerbank', iconUrl: '/src/assets/img/PowerBankIcon.svg'},
-    {description: 'Установка с гелиотрекером', iconUrl: '/src/assets/img/GpsIcon.svg'}
+  {description: ConfiguratorModules.quickChargeModule, iconUrl: '/src/assets/img/ChargeBatteryIcon.svg'},
+  {description: ConfiguratorModules.jumpStarterModule, iconUrl: '/src/assets/img/JumpStarterIcon.svg'},
+  {description: ConfiguratorModules.invertorModule, iconUrl: '/src/assets/img/InvertorIcon.svg'},
+  {description: ConfiguratorModules.universalVoltageModule, iconUrl: '/src/assets/img/SpeedIcon.svg'},
+  {description: ConfiguratorModules.leadBattery12VChargingModule, iconUrl: '/src/assets/img/BatteryIcon.svg'},
+  {description: ConfiguratorModules.solarPanelModule, iconUrl: '/src/assets/img/NoCO2Icon.svg'},
+  {description: ConfiguratorModules.powerbankModule, iconUrl: '/src/assets/img/PowerBankIcon.svg'},
+  {description: ConfiguratorModules.solarTrackerModule, iconUrl: '/src/assets/img/GpsIcon.svg'}
 ];
 
 export function ProductsCard() {
-    return (
-        <ProductsCardStyled>
-            <ProductsCardContainer>
-                <ProductsCardItem title={'Походная версия'}
-                                  products={products}
-                                  price={65000} imgUrl={'/img/MainSolarPanelImg.png'} path={'/'}/>
-                <ProductsCardItem title={'Походная версия'}
-                                  products={products}
-                                  price={65000} imgUrl={'/img/MainSolarPanelImg.png'} path={'/'}/>
-                <ProductsCardItem title={'Походная версия'}
-                                  products={products}
-                                  price={65000} imgUrl={'/img/MainSolarPanelImg.png'} path={'/'}/>
-            </ProductsCardContainer>
-        </ProductsCardStyled>
-    );
+
+  const catalogWorkstationStore = useCatalogWorkstationsStore();
+
+  useEffect(() => {
+    catalogWorkstationStore.fetch();
+    console.log(catalogWorkstationStore.catalogWorkstations);
+  }, []);
+
+  return (
+    <ProductsCardStyled>
+        <ProductsCardContainer>
+            {catalogWorkstationStore.catalogWorkstations.map((workstation) => (
+              <ProductsCardItem
+                key={workstation.id}
+                title={workstation.name}
+                products={products}
+                price={workstation.defaultPrice}
+                imgUrl={'/img/MainSolarPanelImg.png'}
+                path={''}
+              />
+            ))}
+        </ProductsCardContainer>
+    </ProductsCardStyled>
+  );
 }

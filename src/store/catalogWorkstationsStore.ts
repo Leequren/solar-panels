@@ -5,8 +5,8 @@ import {create} from "zustand";
 
 export interface ICatalogWorkstations {
   id: number;
-  title: string;
-  answer: string;
+  name: string;
+  defaultPrice: number;
 }
 
 export interface ICatalogWorkstationsState {
@@ -14,11 +14,11 @@ export interface ICatalogWorkstationsState {
   fetch: () => Promise<void>;
 }
 
-export const useFaqStore = create<ICatalogWorkstationsState>((set) => ({
+export const useCatalogWorkstationsStore = create<ICatalogWorkstationsState>((set) => ({
   catalogWorkstations: [],
   fetch: async () => {
     const catalogWorkstations = await ky
-      .get(`${apiUrl}${backendRoutes.getFaqs}`)
+      .get(`${apiUrl}${backendRoutes.getCatalogWorkstations}`)
       .json<ICatalogWorkstations[]>();
     set({catalogWorkstations: catalogWorkstations});
   },
