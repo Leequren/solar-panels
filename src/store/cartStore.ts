@@ -22,6 +22,7 @@ interface ICartPartInsert extends Omit<ICartPart, "count"> {
 interface ICartState {
   parts: { [partKey: string]: ICartPart } | null;
   totalSum: number;
+  count: number;
   addFirstPart: (part: ICartPartInsert) => void;
   addPart: (part: ICartPartInsert) => void;
   decrementCountPart: (id: number) => void;
@@ -34,6 +35,7 @@ export const useCartStore = create<ICartState>()(
     (set, get) => ({
       parts: null,
       totalSum: 0,
+      count: 0,
       addFirstPart: (part) => {
         let parts = get().parts;
         if (!parts) parts = {};
@@ -74,7 +76,11 @@ export const useCartStore = create<ICartState>()(
             sum += parts[key].count * parts[key].defaultPrice;
           }
         }
-        set({ totalSum: sum });
+
+        const partsItems = Object.keys(
+          get().parts as { [partKey: string]: ICartPart }
+        ).length;
+        set({ totalSum: sum, count: partsItems });
       },
     }),
     { name: "cart" }
