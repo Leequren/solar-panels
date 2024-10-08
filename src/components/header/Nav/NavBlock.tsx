@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { routes } from "@/const/routes.ts";
 import BurgerMenuClose from "@/assets/img/BurgerMenuClose.svg?react";
 import RemoveIcon from "@/assets/img/RemoveIcon.svg?react";
+import { useCartStore } from "@/store/cartStore.ts";
 interface NavBlockProps {
   IsMobile: boolean;
 }
@@ -52,20 +53,20 @@ const BurgerMenuItem = styled.div`
 
 export const NavBlock: React.FC<NavBlockProps> = ({ IsMobile }) => {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-
+  const { count } = useCartStore();
   const DesktopLayout = (
     <NavStyled>
       <NavItem name="Главная" path={routes.main} />
-      <NavItem name="О сервисе" path={routes.main + '#Additional'} />
+      <NavItem name="О сервисе" path={routes.main + "#Additional"} />
       <NavItem name="Продукция" path={routes.products} />
-      <NavItem name="О нас" path={routes.main + '#AboutUs'} />
+      <NavItem name="О нас" path={routes.main + "#AboutUs"} />
 
       <NavItem name="FAQ" path={routes.main + "#faq"} />
       <NavItem name="Контакты" path={routes.main + "#ContactsItem"} />
       <NavItem
         name="Каталог"
-        path={routes.products}
-        counter={10}
+        path={routes.cart}
+        counter={count}
         isCart
         imgUrl="/img/cartIcon.png"
       />
@@ -80,8 +81,8 @@ export const NavBlock: React.FC<NavBlockProps> = ({ IsMobile }) => {
     <NavStyledMobile>
       <NavItem
         name="Каталог"
-        path={routes.products}
-        counter={10}
+        path={routes.cart}
+        counter={count}
         isCart
         imgUrl="/img/cartIcon.png"
       />

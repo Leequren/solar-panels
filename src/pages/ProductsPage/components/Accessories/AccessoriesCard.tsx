@@ -122,6 +122,9 @@ const MainInfoPart = styled.div`
     }
   }
 `;
+
+
+
 export function AccessoriesCard({
   title,
   price,

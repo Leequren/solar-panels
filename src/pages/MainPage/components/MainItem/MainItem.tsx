@@ -1,13 +1,16 @@
 import {FC} from "react";
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
+import {routes} from "@/const/routes.ts";
 
 interface MainItemProps {
-    title: string;
-    description: string;
-    img: string;
-    weight: string;
-    power: string;
-    size: string;
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+  weight: string;
+  power: string;
+  size: string;
 }
 
 const MainItemStyled = styled.div`
@@ -71,7 +74,7 @@ const MainItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 45px;
-    
+
     @media (max-width: 1000px) {
         gap: 20px;
     }
@@ -225,6 +228,7 @@ const ButtonPreOrder = styled.div`
     border-radius: 100px;
     box-shadow: 0 0 10px 5px #00000040;
     border: none;
+    cursor: pointer;
 
     @media (max-width: 1650px) {
         font-size: 25px;
@@ -252,6 +256,7 @@ const ButtonDetails = styled.div`
     border: none;
     padding: 18px 45px;
     border-radius: 100px;
+    cursor: pointer;
 
     @media (max-width: 1650px) {
         font-size: 25px;
@@ -278,48 +283,55 @@ const CharacteristicsContainer = styled.div`
     gap: 20px;
 `;
 export const MainItem: FC<MainItemProps> = ({
-                                                title,
-                                                description,
-                                                img,
-                                                weight,
-                                                power,
-                                                size,
+                                              id,
+                                              title,
+                                              description,
+                                              img,
+                                              weight,
+                                              power,
+                                              size,
                                             }) => {
-    return (
-        <MainItemStyled>
-            <MainItemContainer>
-                <MainTextContainer>
-                    <h1>{title}</h1>
-                    <p>{description}</p>
-                </MainTextContainer>
 
-                <CharacteristicsContainer>
-                    <Characteristics>
-                        <h1>Масса, кг</h1>
-                        <span>{weight}</span>
-                    </Characteristics>
+  const navigate = useNavigate();
+  const btnHandler = (id: number) => {
+    navigate(`${routes.configurator}?id=${id}`)
+  }
 
-                    <Characteristics>
-                        <h1>Мощность, Вт</h1>
-                        <span>{power}</span>
-                    </Characteristics>
+  return (
+    <MainItemStyled>
+      <MainItemContainer>
+        <MainTextContainer>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </MainTextContainer>
 
-                    <Characteristics>
-                        <h1>Размер, см</h1>
-                        <span>{size}</span>
-                    </Characteristics>
-                </CharacteristicsContainer>
+        <CharacteristicsContainer>
+          <Characteristics>
+            <h1>Масса, кг</h1>
+            <span>{weight}</span>
+          </Characteristics>
 
-                <ButtonContainer>
-                    <ButtonPreOrder>
-                        Предзаказ
-                    </ButtonPreOrder>
-                    <ButtonDetails>
-                        Подробнее
-                    </ButtonDetails>
-                </ButtonContainer>
-            </MainItemContainer>
-                <img src={img} alt=""/>
-        </MainItemStyled>
-    );
+          <Characteristics>
+            <h1>Мощность, Вт</h1>
+            <span>{power}</span>
+          </Characteristics>
+
+          <Characteristics>
+            <h1>Размер, см</h1>
+            <span>{size}</span>
+          </Characteristics>
+        </CharacteristicsContainer>
+
+        <ButtonContainer>
+          <ButtonPreOrder onClick={() => btnHandler(id)}>
+            Предзаказ
+          </ButtonPreOrder>
+          <ButtonDetails onClick={() => btnHandler(id)}>
+            Подробнее
+          </ButtonDetails>
+        </ButtonContainer>
+      </MainItemContainer>
+      <img src={img} alt=""/>
+    </MainItemStyled>
+  );
 };

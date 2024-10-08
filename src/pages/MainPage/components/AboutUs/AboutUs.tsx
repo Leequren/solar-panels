@@ -1,11 +1,11 @@
 import styled from "styled-components";
+import {routes} from "@/const/routes.ts";
 
 interface AboutUsProps {
   title: string;
   description: string;
   imgUrl: string;
   bgUrl: string;
-  path: string;
 }
 
 const AboutUsStyled = styled.div`
@@ -66,13 +66,15 @@ const AboutUsContentStyled = styled.div<Partial<AboutUsProps>>`
         padding-bottom: 20px;
     }
 
-    > button {
+    > a {
         padding: 19px 40px;
         font-size: 26px;
         font-weight: 500;
         background-color: black;
         color: white;
         border-radius: 100px;
+        cursor: pointer;
+        text-decoration: none;
     }
 
     @media (max-width: 1650px) {
@@ -90,7 +92,7 @@ const AboutUsContentStyled = styled.div<Partial<AboutUsProps>>`
             font-size: 20px;
         }
 
-        > button {
+        > a {
             padding: 15px 35px;
             font-size: 22px;
         }
@@ -106,7 +108,7 @@ const AboutUsContentStyled = styled.div<Partial<AboutUsProps>>`
             font-size: 19px;
         }
 
-        > button {
+        > a {
             font-size: 16px;
             padding: 10px 25px;
         }
@@ -115,13 +117,14 @@ const AboutUsContentStyled = styled.div<Partial<AboutUsProps>>`
 `;
 
 export function AboutUs({ title, description, imgUrl, bgUrl }: AboutUsProps) {
+
   return (
     <AboutUsStyled id='AboutUs'>
       <img src={imgUrl} alt="" />
       <AboutUsContentStyled bgUrl={bgUrl}>
         <h1>{title}</h1>
         <p>{description}</p>
-        <button>Каталог</button>
+        <a href={routes.products}>Каталог</a>
       </AboutUsContentStyled>
     </AboutUsStyled>
   );

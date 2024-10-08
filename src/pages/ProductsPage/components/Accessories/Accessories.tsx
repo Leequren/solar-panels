@@ -22,7 +22,6 @@ export function Accessories() {
 
   useEffect(() => {
     partsStore.fetch();
-    console.log(partsStore.parts)
   }, []);
 
   return (

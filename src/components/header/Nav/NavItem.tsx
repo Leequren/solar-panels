@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {routes} from "@/const/routes.ts";
 
 interface NavItemProps {
   name: string;
@@ -149,7 +150,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       <NavItemContainer isCart={isCart}>
         <NavItemStyled href={path} isCart={isCart}>{name}</NavItemStyled>
         {isCart && (
-            <IsCartStyled>
+            <IsCartStyled onClick={() => window.location.href = routes.cart}>
               <CounterStyled> {counter} </CounterStyled>
               <img src={imgUrl} alt="" />
             </IsCartStyled>

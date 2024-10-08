@@ -17,6 +17,7 @@ export const MainPage: FC = () => {
   return (
     <div>
       <MainItem
+        id={mainItemStore.mainItems.id}
         title={mainItemStore.mainItems.name}
         description={mainItemStore.mainItems.description}
         img={"/img/MainSolarPanelImg.png"}
@@ -41,7 +42,6 @@ export const MainPage: FC = () => {
         }
         imgUrl={"/img/AboutUsImg.png"}
         bgUrl={"/src/assets/img/AboutUsIcon.svg"}
-        path={""}
       />
       <FAQ title={"FAQs"} description={"Часто задаваемые вопросы"} />
     </div>
