@@ -190,36 +190,6 @@ export const ConfigItem: FC<IConfigItemProps> = ({
     <CloseIcon stroke={!removed ? "black" : "#B5B5B5"} />
   );
 
-  // function renderConfig() {
-  //   if (!config) return null;
-  //   console.log(config);
-  //   console.log(
-  //     Object.keys(config).map((configKey) => {
-  //       console.log(configKey);
-  //       console.log(config[configKey]);
-  //     })
-  //   );
-  //   return (
-  //     <ConfigOptionsContainer>
-  //       {Object.keys(config).map((configKey) => (
-  //         <div key={configKey}>
-  //           <h3>{configKey}</h3>
-  //           <p>{config[configKey].desc}</p>
-  //           {Object.keys(config[configKey].configOptions).map((optionKey) => (
-  //             <ConfigOptionsItem key={optionKey}>
-  //               <ConfigOptionsItemSpan>
-  //                 {optionKey}:{" "}
-  //                 {config[configKey].configOptions[optionKey].price} руб., USB
-  //                 портов: {config[configKey].configOptions[optionKey].countUsb}
-  //               </ConfigOptionsItemSpan>
-  //             </ConfigOptionsItem>
-  //           ))}
-  //         </div>
-  //       ))}
-  //     </ConfigOptionsContainer>
-  //   );
-  // }
-
   return (
     <ContentWrapper removed={removed}>
       <Container removed={removed} opened={opened}>
