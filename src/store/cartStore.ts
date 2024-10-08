@@ -24,7 +24,7 @@ interface ICartState {
   totalSum: number;
   count: number;
   addFirstPart: (part: ICartPartInsert) => void;
-  addPart: (part: ICartPartInsert) => void;
+  incementCountPart: (id: number) => void;
   decrementCountPart: (id: number) => void;
   reduceSum: () => void;
 }
@@ -45,14 +45,12 @@ export const useCartStore = create<ICartState>()(
         set({ parts: parts });
         get().reduceSum();
       },
-      addPart: (part) => {
+      incementCountPart: (id) => {
         const parts = get().parts;
         if (!parts) return;
 
-        if (parts[part.idPart]) {
-          parts[part.idPart].count += 1;
-        } else {
-          parts[part.idPart] = { ...part, count: 1 };
+        if (parts[id]) {
+          ++parts[id].count;
         }
 
         set({ parts: parts });

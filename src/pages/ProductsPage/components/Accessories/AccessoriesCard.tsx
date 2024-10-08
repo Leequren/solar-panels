@@ -129,7 +129,8 @@ export function AccessoriesCard({
   id,
 }: AccessoriesCardProps) {
   const navigate = useNavigate();
-  const { addFirstPart, parts, addPart, decrementCountPart } = useCartStore();
+  const { addFirstPart, parts, incementCountPart, decrementCountPart } =
+    useCartStore();
   const btnHandler = (id: number) => {
     navigate(`${routes.productsCardInfo}?id=${id}`);
   };
@@ -145,13 +146,7 @@ export function AccessoriesCard({
     });
   };
   const addPartToCartHandler = () => {
-    addPart({
-      idPart: id,
-      defaultPrice: price,
-      imgSrc: "",
-      name: title,
-      config: null,
-    });
+    incementCountPart(id);
   };
   const decrementCountPartsHandler = () => {
     decrementCountPart(id);
