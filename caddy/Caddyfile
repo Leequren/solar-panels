@@ -4,11 +4,20 @@ http://localhost:80 {
 	# basicauth {
 	#       admin $2a$14$ANgTXEDsK8BNvtgt2q7pe.Js2qNJgyKQMcpgAowbP3AMAHfg7wUoO
 	#   }
+	
   basicauth /studio/* {
     admin $2a$14$/Kf4JDzfJdC/i.NuU30whOFoObwI1ckMGhf3RqrnmZ7XhgtMs.MZ.
   }
 	handle /studio/* {
 		uri strip_prefix /studio
 		reverse_proxy localhost:5555
+	}
+
+	handle /api/* {
+		reverse_proxy localhost:5000
+	}
+
+ 	handle /* {
+		reverse_proxy localhost:5173
 	}
 }

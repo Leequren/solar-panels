@@ -57,8 +57,7 @@ model LeadBattery12VChargingEquip {
   price Int
   desc String
   name String
-  workstationId Int
-  workstation Workstation @relation(fields: [workstationId], references: [id])
+  workstation Workstation[]
 }
 model InvertorEquip {
   id Int @id @default(autoincrement())

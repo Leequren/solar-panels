@@ -25,7 +25,16 @@ export async function createPartWithConfig(
 }
 
 export async function getPartById(id: number) {
-  return await prisma.part.findUnique({ where: { id } });
+  return await prisma.part.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      name: true,
+      images: true,
+      defaultPrice: true,
+      partConfigurations: true,
+    },
+  });
 }
 
 export async function getParts() {

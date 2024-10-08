@@ -45,8 +45,8 @@ const mainBackend = async () => {
 
   await app.register(setupRoutes);
 
-  await app.listen({ port: PORT });
-  console.log(`Backend Server is running on http://localhost:${PORT}`);
+  await app.listen({ port: PORT, host: "0.0.0.0" });
+  console.log(`Backend Server is running on ${PORT}`);
 };
 
 // const mainReverseProxy = async () => {
