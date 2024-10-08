@@ -131,7 +131,7 @@ export const CartProductsItemDesktop: React.FC<ICartProductsItemDesktopProps> = 
                             <span>{price} ₽</span>
                         </CartProductsItemPrice>
                         <CartProductsItemCharacteristics>
-                            {type === 'W' ? <ConfigWs/> : type === 'P' ? <ConfigPart value={valueCharacteristics} title={titleCharacteristics}/> : <h1>Дима Пидор</h1>}
+                            {type === 'W' ? <ConfigWs/> : type === 'P' ? <ConfigPart value={valueCharacteristics} title={titleCharacteristics}/> : null}
                         </CartProductsItemCharacteristics>
                     </CartProductsItemPriceContainer>
                 </CartProductsItemCharacteristicsContainer>

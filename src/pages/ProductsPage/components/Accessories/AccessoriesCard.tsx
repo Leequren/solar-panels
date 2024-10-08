@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import {routes} from "@/const/routes.ts";
+import {useNavigate} from "react-router-dom";
 
 interface AccessoriesCardProps {
+  id: number;
   title: string;
   price: number;
   imgUrl: string;
@@ -10,7 +13,7 @@ const AccessoriesCardStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between; /* Устанавливаем равномерное распределение контента */
+    justify-content: space-between;
     max-width: 390px;
     margin-top: 30px;
     gap: 7px;
@@ -60,12 +63,12 @@ const AccessoriesCardTitle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: 70px; /* Минимальная высота для заголовков, чтобы избежать разницы из-за переноса строк */
+    min-height: 70px;
 
     > h1 {
         font-size: 26px;
         font-weight: 400;
-        white-space: pre-wrap; /* Разрешаем перенос текста */
+        white-space: pre-wrap;
     }
 
     > span {
@@ -97,17 +100,15 @@ const AccessoriesCardTitle = styled.div`
     }
 `;
 
-const AccessoriesCardContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    align-items: stretch; /* Все карточки будут иметь одинаковую высоту */
-`;
+export function AccessoriesCard({ title, price, imgUrl, id }: AccessoriesCardProps) {
 
-export function AccessoriesCard({ title, price, imgUrl }: AccessoriesCardProps) {
+  const navigate = useNavigate();
+  const btnHandler = (id: number) => {
+    navigate(`${routes.productsCardInfo}?id=${id}`)
+  }
+
   return (
-    <AccessoriesCardStyled>
+    <AccessoriesCardStyled onClick={() => btnHandler(id)}>
       <img src={imgUrl} alt="" />
       <AccessoriesCardTitle>
         <h1>{title}</h1>

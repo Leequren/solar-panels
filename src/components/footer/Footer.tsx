@@ -63,7 +63,7 @@ export function Footer() {
   const isBig = useWindowDimensions().width > 600;
 
   return isMobile ? (
-    <FooterStyled>
+    <FooterStyled id='ContactsItem'>
       <FooterMobileContainer>
         <MainInfo isOneColumn={true} />
         <CompanyInfoSvg isBig={isBig} />
@@ -77,7 +77,7 @@ export function Footer() {
       <CompanyInfo />
     </FooterStyled>
   ) : (
-    <FooterStyled>
+    <FooterStyled id='ContactsItem'>
       <Contacts />
       <MainInfo />
       <CompanyInfo />

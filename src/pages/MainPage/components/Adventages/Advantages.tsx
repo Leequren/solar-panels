@@ -105,7 +105,7 @@ const TitleStyled = styled.div`
 
 export function Advantages({ title, description }: AdvantagesProps) {
   return (
-    <AdvantagesStyled>
+    <AdvantagesStyled id='Additional'>
       <TitleStyled>
         <h1>{title}</h1>
         <p>{description}</p>

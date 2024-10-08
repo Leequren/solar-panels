@@ -2,6 +2,12 @@ import styled from "styled-components";
 import Plus from '../../../assets/img/Plus.svg?react'
 import Minus from '../../../assets/img/Minus.svg?react'
 
+interface IProductsCardItemsCharacteristicsProps {
+  name: string;
+  price: number;
+  partConfigurations: Record<string, Record<string, { price: number; valueConfig: string; partId: number | null }>>;
+}
+
 const CardItemsCharacteristicsStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -138,6 +144,7 @@ const CharacteristicsVariations = styled.div`
 
 const CharacteristicsVariationsTitle = styled.div`
     display: flex;
+    align-items: center;
     gap: 10px;
 
     .title {
@@ -222,44 +229,51 @@ const CharacteristicsPrice = styled.div`
     }
 `
 
-export function ProductsCardItemsCharacteristics() {
+export function ProductsCardItemsCharacteristics({
+                                                   name,
+                                                   price,
+                                                   partConfigurations
+                                                 }: IProductsCardItemsCharacteristicsProps) {
 
-    return (
-        <CardItemsCharacteristicsStyled>
-            <CharacteristicsTitle>
-                <span>Модуль быстрой зарядки телефона</span>
-            </CharacteristicsTitle>
+  const hasConfigurations = Object.keys(partConfigurations).length > 0;
 
-            <CharacteristicsItemWrapper>
-                <CharacteristicsItemContainer>
-                    <CharacteristicsVariations>
-                        <CharacteristicsVariationsTitle>
-                            <span className='title'>Количество USB-портов: </span>
-                            <span className='value'>2</span>
-                        </CharacteristicsVariationsTitle>
-                        <CharacteristicsVariationsContainer>
-                            <span>1</span>
-                            <span>2</span>
-                            <span>4</span>
-                        </CharacteristicsVariationsContainer>
-                    </CharacteristicsVariations>
-                    <CharacteristicsPrice>
-                        <span>17000 ₽</span>
-                    </CharacteristicsPrice>
-                </CharacteristicsItemContainer>
-                <CharacteristicsItemButtonContainer>
-                    <AddToCartButton>В корзину</AddToCartButton>
-                    {/*<AddToCartCounterButton>*/}
-                    {/*    <button>*/}
-                    {/*        <Minus/>*/}
-                    {/*    </button>*/}
-                    {/*    <span>1</span>*/}
-                    {/*    <button>*/}
-                    {/*        <Plus/>*/}
-                    {/*    </button>*/}
-                    {/*</AddToCartCounterButton>*/}
-                </CharacteristicsItemButtonContainer>
-            </CharacteristicsItemWrapper>
-        </CardItemsCharacteristicsStyled>
-    )
+  return (
+    <CardItemsCharacteristicsStyled>
+      <CharacteristicsTitle>
+        <span>{name}</span>
+      </CharacteristicsTitle>
+
+      <CharacteristicsItemWrapper>
+        <CharacteristicsItemContainer>
+          {hasConfigurations && Object.entries(partConfigurations).map(([configName, configOptions]) => (
+            <CharacteristicsVariations key={configName}>
+              <CharacteristicsVariationsTitle>
+                <span className='title'>Количество {configName}-портов: </span>
+              </CharacteristicsVariationsTitle>
+              <CharacteristicsVariationsContainer>
+                {Object.entries(configOptions).map(([idConfig, option]) => (
+                  <span key={idConfig}>{option.valueConfig}</span>
+                ))}
+              </CharacteristicsVariationsContainer>
+            </CharacteristicsVariations>
+          ))}
+          <CharacteristicsPrice>
+            <span>{price} ₽</span>
+          </CharacteristicsPrice>
+        </CharacteristicsItemContainer>
+        <CharacteristicsItemButtonContainer>
+          <AddToCartButton>В корзину</AddToCartButton>
+          {/*<AddToCartCounterButton>*/}
+          {/*    <button>*/}
+          {/*        <Minus/>*/}
+          {/*    </button>*/}
+          {/*    <span>1</span>*/}
+          {/*    <button>*/}
+          {/*        <Plus/>*/}
+          {/*    </button>*/}
+          {/*</AddToCartCounterButton>*/}
+        </CharacteristicsItemButtonContainer>
+      </CharacteristicsItemWrapper>
+    </CardItemsCharacteristicsStyled>
+  );
 }

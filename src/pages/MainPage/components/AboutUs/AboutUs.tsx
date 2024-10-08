@@ -116,7 +116,7 @@ const AboutUsContentStyled = styled.div<Partial<AboutUsProps>>`
 
 export function AboutUs({ title, description, imgUrl, bgUrl }: AboutUsProps) {
   return (
-    <AboutUsStyled>
+    <AboutUsStyled id='AboutUs'>
       <img src={imgUrl} alt="" />
       <AboutUsContentStyled bgUrl={bgUrl}>
         <h1>{title}</h1>

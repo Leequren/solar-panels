@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 interface ProductsCardProps {
   ImgUrl: string;
-  title: string;
   description: string;
   price: number;
   path: string;
@@ -38,13 +37,14 @@ const ProductsCardStyled = styled.div`
     text-wrap: nowrap;
   }
 
-  > button {
+  > a {
     background-color: black;
     border-radius: 100px;
     color: white;
     font-size: 26px;
     font-weight: 500;
     padding: 14px 33px;
+    text-decoration: none;
   }
 
   @media (max-width: 1300px) {

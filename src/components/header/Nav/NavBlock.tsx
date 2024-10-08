@@ -56,12 +56,12 @@ export const NavBlock: React.FC<NavBlockProps> = ({ IsMobile }) => {
   const DesktopLayout = (
     <NavStyled>
       <NavItem name="Главная" path={routes.main} />
-      <NavItem name="О сервисе" path="#Additional" />
+      <NavItem name="О сервисе" path={routes.main + '#Additional'} />
       <NavItem name="Продукция" path={routes.products} />
-      <NavItem name="О нас" path="#AboutUs" />
+      <NavItem name="О нас" path={routes.main + '#AboutUs'} />
 
       <NavItem name="FAQ" path={routes.main + "#faq"} />
-      <NavItem name="Контакты" path="#ContactsItem" />
+      <NavItem name="Контакты" path={routes.main + "#ContactsItem"} />
       <NavItem
         name="Каталог"
         path={routes.cart}

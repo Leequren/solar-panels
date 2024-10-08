@@ -1,6 +1,7 @@
 import { backendRoutes, routes } from "@/const/routes";
 import ky from "ky";
 import { create } from "zustand";
+import {apiUrl} from "@/const/backendUrl.ts";
 
 export interface IPartConfiguration {
   [id_configuration: number]: {
@@ -25,7 +26,7 @@ export const useProductInfoStore = create<IProductInfoState>((set) => ({
   productInfo: null,
   fetch: async (idProductPart: number) => {
     const reply = await ky
-      .get(`${backendRoutes.getPartInfo}?id=${idProductPart}`)
+      .get(`${apiUrl}${backendRoutes.getPartInfo}?id=${idProductPart}`)
       .json<IPartProduct>();
     set({ productInfo: reply });
   },

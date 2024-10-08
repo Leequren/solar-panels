@@ -2,6 +2,7 @@ import { MainButton } from "./MainButton";
 import styled from "styled-components";
 import React from "react";
 import { useWindowDimensions } from "@/hooks/useWindowSize/useWindowWidth.tsx";
+import {routes} from "@/const/routes.ts";
 
 interface MainInfoProps {
   isOneColumn?: boolean;
@@ -30,32 +31,32 @@ export const MainInfo: React.FC<MainInfoProps> = ({ isOneColumn }) => {
   return isMobile ? (
     isOneColumn ? (
       <Column>
-        <MainButton name={"Главная"} path={"#Home"} />
-        <MainButton name={"О сервисе"} path={"#Advantages"} />
-        <MainButton name={"Продукция"} path={"#Products"} />
-        <MainButton name={"О нас"} path={"#AboutUs"} />
+        <MainButton name={"Главная"} path={routes.main} />
+        <MainButton name={"О сервисе"} path={routes.main + '#Additional'} />
+        <MainButton name={"Продукция"} path={routes.products} />
+        <MainButton name={"О нас"} path={routes.main + '#AboutUs'} />
       </Column>
     ) : (
       <Column>
-        <MainButton name={"FAQ"} path={"#FAQ"} />
-        <MainButton name={"Контакты"} path={"#Contacts"} />
+        <MainButton name={"FAQ"} path={routes.main + "#faq"} />
+        <MainButton name={"Контакты"} path={routes.main + "#ContactsItem"} />
         <MainButton name={"Каталог"} path={"#Catalog"} />
-        <MainButton name={"Корзина"} path={"#Cart"} />
+        <MainButton name={"Корзина"} path={routes.cart} />
       </Column>
     )
   ) : (
     <MainInfoStyled>
       <Column>
-        <MainButton name={"Главная"} path={"#Home"} />
-        <MainButton name={"О сервисе"} path={"#Advantages"} />
-        <MainButton name={"Продукция"} path={"#Products"} />
-        <MainButton name={"О нас"} path={"#AboutUs"} />
+        <MainButton name={"Главная"} path={routes.main} />
+        <MainButton name={"О сервисе"} path={routes.main + '#Additional'} />
+        <MainButton name={"Продукция"} path={routes.products} />
+        <MainButton name={"О нас"} path={routes.main + '#AboutUs'} />
       </Column>
       <Column>
-        <MainButton name={"FAQ"} path={"#FAQ"} />
-        <MainButton name={"Контакты"} path={"#Contacts"} />
+        <MainButton name={"FAQ"} path={routes.main + "#faq"} />
+        <MainButton name={"Контакты"} path={routes.main + "#ContactsItem"} />
         <MainButton name={"Каталог"} path={"#Catalog"} />
-        <MainButton name={"Корзина"} path={"#Cart"} />
+        <MainButton name={"Корзина"} path={routes.cart} />
       </Column>
     </MainInfoStyled>
   );

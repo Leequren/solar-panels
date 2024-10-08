@@ -1,7 +1,15 @@
 import styled from "styled-components";
-import {ProductsCardItemsImage} from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsImage.tsx";
-import {ProductsCardItemsCharacteristics} from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsCharacteristics.tsx";
-import {ProductsCardItemsDescription} from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsDescription.tsx";
+import { ProductsCardItemsImage } from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsImage.tsx";
+import { ProductsCardItemsCharacteristics } from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsCharacteristics.tsx";
+import { ProductsCardItemsDescription } from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsDescription.tsx";
+
+interface IProductsCardItemsProps {
+  imgUrl: string;
+  name: string;
+  price: number;
+  partConfigurations: Record<string, any>; // Объект с характеристиками товара
+  description: string[];
+}
 
 const CardItemsStyled = styled.div`
     display: flex;
@@ -10,11 +18,9 @@ const CardItemsStyled = styled.div`
     @media (max-width: 850px) {
         gap: 40px;
     }
-`
+`;
 
-const CardItemsWrapper = styled.div`
-    
-`
+const CardItemsWrapper = styled.div``;
 
 const CardItemsContainer = styled.div`
     display: flex;
@@ -26,30 +32,36 @@ const CardItemsContainer = styled.div`
         flex-direction: column;
         gap: 10px;
     }
-`
+`;
 
-const CardItemsCharacteristicsContainer = styled.div`
+const CardItemsCharacteristicsContainer = styled.div``;
 
-`
+const CardItemsDescriptionWrapper = styled.div``;
 
-const CardItemsDescriptionWrapper = styled.div`
-
-`
-
-export function ProductsCardItems() {
-    return (
-        <CardItemsStyled>
-            <CardItemsWrapper>
-                <CardItemsContainer>
-                    <ProductsCardItemsImage/>
-                    <CardItemsCharacteristicsContainer>
-                        <ProductsCardItemsCharacteristics/>
-                    </CardItemsCharacteristicsContainer>
-                </CardItemsContainer>
-            </CardItemsWrapper>
-            <CardItemsDescriptionWrapper>
-                <ProductsCardItemsDescription/>
-            </CardItemsDescriptionWrapper>
-        </CardItemsStyled>
-    )
+export function ProductsCardItems({
+                                    imgUrl,
+                                    name,
+                                    price,
+                                    partConfigurations,
+                                    description,
+                                  }: IProductsCardItemsProps) {
+  return (
+    <CardItemsStyled>
+      <CardItemsWrapper>
+        <CardItemsContainer>
+          <ProductsCardItemsImage imgUrl={imgUrl} />
+          <CardItemsCharacteristicsContainer>
+            <ProductsCardItemsCharacteristics
+              name={name}
+              price={price}
+              partConfigurations={partConfigurations}
+            />
+          </CardItemsCharacteristicsContainer>
+        </CardItemsContainer>
+      </CardItemsWrapper>
+      <CardItemsDescriptionWrapper>
+        <ProductsCardItemsDescription title={name} description={description} />
+      </CardItemsDescriptionWrapper>
+    </CardItemsStyled>
+  );
 }

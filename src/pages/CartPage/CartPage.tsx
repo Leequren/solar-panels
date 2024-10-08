@@ -12,24 +12,30 @@ const CartPageStyled = styled.div`
     @media (max-width: 1650px) {
         margin-top: 30px;
     }
-`
+`;
 
 const CartPageStyledWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 50px;
-`
+    gap: 40px;
+`;
 
 const CartPageTitle = styled.div`
     display: flex;
+    width: 100%;
 
     > h1 {
         font-size: 60px;
         font-weight: 500;
     }
 
-    width: 100%;
-`
+    @media (max-width: 1150px) {
+        > h1 {
+            font-size: 20px;
+        }
+    }
+
+`;
 
 const CartPageComponentsContainer = styled.div`
     display: flex;
@@ -39,7 +45,7 @@ const CartPageComponentsContainer = styled.div`
         flex-direction: column;
         align-items: center;
     }
-`
+`;
 
 export function CartPage() {
 

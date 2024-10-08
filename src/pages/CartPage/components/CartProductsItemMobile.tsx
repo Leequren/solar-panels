@@ -134,8 +134,7 @@ valueCharacteristics
                             <span>{title}</span>
                             <CartProductsItemCharacteristics>
                                 {type === 'W' ? <ConfigWs/> : type === 'P' ?
-                                    <ConfigPart value={valueCharacteristics} title={titleCharacteristics}/> :
-                                    <h1>Дима Пидор</h1>}
+                                    <ConfigPart value={valueCharacteristics} title={titleCharacteristics}/> : null}
                             </CartProductsItemCharacteristics>
                         </CartProductsItemTitle>
                     </CartProductsItemCharacteristicsContainer>

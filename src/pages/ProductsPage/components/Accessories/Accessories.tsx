@@ -30,6 +30,7 @@ export function Accessories() {
       {partsStore.parts.map((part) => (
         <AccessoriesCard
           key={part.id}
+          id={part.id}
           title={part.name}
           price={part.defaultPrice}
           imgUrl={'/img/MainSolarPanelImg.png'}

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IProductsCardItemsImageProps {
+  imgUrl: string
+}
+
 const CardItemsImageContainer = styled.div`
     > img {
         width: 800px;
@@ -34,10 +38,10 @@ const CardItemsImageContainer = styled.div`
     }
 `
 
-export function ProductsCardItemsImage() {
+export function ProductsCardItemsImage({imgUrl}: IProductsCardItemsImageProps) {
     return (
         <CardItemsImageContainer>
-            <img src='/img/MainSolarPanelImg.png' alt=""/>
+            <img src={imgUrl} alt=""/>
         </CardItemsImageContainer>
     );
 }

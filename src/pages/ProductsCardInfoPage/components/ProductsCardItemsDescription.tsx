@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface IProductsCardItemsDescriptionProps {
+  title: string,
+  description: string[]
+}
+
 const CardItemsDescriptionContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -87,25 +92,23 @@ const CardItemsDescriptionTextDescription = styled.div`
     }
 `
 
-export function ProductsCardItemsDescription() {
+export function ProductsCardItemsDescription({title, description}: IProductsCardItemsDescriptionProps) {
 
-    return (
-        <CardItemsDescriptionContainer>
-            <CardItemsDescriptionTitle>
-                <span>Описание</span>
-            </CardItemsDescriptionTitle>
-            <CardItemsDescriptionText>
-                <CardItemsDescriptionTextTitle>
-                    <span>Идеально подойдет чтобы быстро зарядить смартфон, ноутбук и другую технику.</span>
-                </CardItemsDescriptionTextTitle>
-                <CardItemsDescriptionTextDescription>
-                        <ul>
-                            <li>Это текст-"рыба", часто используемый.</li>
-                            <li>В печати и вэб-дизайне.</li>
-                            <li>Lorem Ipsum является стандартной "рыбой" для текстов на латинице.</li>
-                        </ul>
-                </CardItemsDescriptionTextDescription>
-            </CardItemsDescriptionText>
-        </CardItemsDescriptionContainer>
-    )
+  return (
+    <CardItemsDescriptionContainer>
+      <CardItemsDescriptionTitle>
+        <span>Описание</span>
+      </CardItemsDescriptionTitle>
+      <CardItemsDescriptionText>
+        <CardItemsDescriptionTextTitle>
+          <span>{title}</span>
+        </CardItemsDescriptionTextTitle>
+        <CardItemsDescriptionTextDescription>
+          <ul>
+            {description.map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </CardItemsDescriptionTextDescription>
+      </CardItemsDescriptionText>
+    </CardItemsDescriptionContainer>
+  )
 }

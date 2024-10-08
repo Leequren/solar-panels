@@ -34,40 +34,40 @@ const ProductsStyled = styled.div`
 `;
 
 const ProductsTitleStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
 
-  > h1 {
-    font-size: 60px;
-    font-weight: 500;
-  }
-
-  > p {
-    font-size: 26px;
-    font-weight: 500;
-    color: #48494b;
-  }
-
-  @media (max-width: 1300px) {
     > h1 {
-      font-size: 40px;
+        font-size: 60px;
+        font-weight: 500;
     }
 
     > p {
-      font-size: 18px;
-    }
-  }
-  @media (max-width: 500px) {
-    > h1 {
-      font-size: 20px;
+        font-size: 26px;
+        font-weight: 500;
+        color: #48494b;
     }
 
-    > p {
-      font-size: 13px;
+    @media (max-width: 1300px) {
+        > h1 {
+            font-size: 40px;
+        }
+
+        > p {
+            font-size: 18px;
+        }
     }
-  }
+    @media (max-width: 500px) {
+        > h1 {
+            font-size: 20px;
+        }
+
+        > p {
+            font-size: 13px;
+        }
+    }
 `;
 const ProductsCardContainerWrapperStyled = styled.div`
   display: flex;
@@ -76,31 +76,31 @@ const ProductsCardContainerWrapperStyled = styled.div`
   max-width: 100%;
 `;
 const ProductsCardContainerStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  width: 100%;
-  overflow-y: hidden;
-  overflow-x: auto;
-  padding-bottom: 43px;
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding-bottom: 43px;
 
-  &::-webkit-scrollbar {
-    height: 11px;
-  }
+    &::-webkit-scrollbar {
+        height: 11px;
+    }
 
-  &::-webkit-scrollbar-track {
-    background: #dddddd;
-    border-radius: 20px;
-  }
+    &::-webkit-scrollbar-track {
+        background: #dddddd;
+        border-radius: 20px;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #48494b;
-    border-radius: 20px;
-  }
+    &::-webkit-scrollbar-thumb {
+        background-color: #48494b;
+        border-radius: 20px;
+    }
 
-  @media (max-width: 500px) {
-    padding-bottom: 30px;
-  }
+    @media (max-width: 500px) {
+        padding-bottom: 30px;
+    }
 `;
 
 export const Products: FC<ProductsProps> = ({ title, description }) => {
@@ -119,14 +119,13 @@ export const Products: FC<ProductsProps> = ({ title, description }) => {
       </ProductsTitleStyled>
       <ProductsCardContainerWrapperStyled>
         <ProductsCardContainerStyled>
-          {/* Делаем map по previewCatalogStore.previewCatalog */}
           {previewCatalogStore.previewCatalog.map((product) => (
             <ProductsCard
-              key={product.id} // Используем уникальный id для ключа
-              ImgUrl={"/img/ProductsCardImage1.png"} // URL изображения
-              description={product.description} // Описание
-              price={product.defaultPrice} // Цена
-              path={`${routes.productsCardInfo}?id=${product.id}`} // Путь для кнопки
+              key={product.id}
+              ImgUrl={"/img/ProductsCardImage1.png"}
+              description={product.description}
+              price={product.defaultPrice}
+              path={`${routes.productsCardInfo}?id=${product.id}`}
             />
           ))}
         </ProductsCardContainerStyled>
