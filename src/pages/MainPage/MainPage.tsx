@@ -3,17 +3,16 @@ import { Advantages } from "./components/Adventages/Advantages";
 import { Products } from "./components/Products/Products";
 import { AboutUs } from "./components/AboutUs/AboutUs";
 import { FAQ } from "./components/FAQ/FAQ";
-import {FC, useEffect} from "react";
-import {useMainItemStore} from "@/store/mainItemStore.ts";
+import { FC, useEffect } from "react";
+import { useMainItemStore } from "@/store/mainItemStore.ts";
 
 export const MainPage: FC = () => {
+  const mainItemStore = useMainItemStore();
 
-    const mainItemStore = useMainItemStore();
-
-    useEffect(() => {
-        mainItemStore.fetch();
-        console.log(mainItemStore.mainItems)
-    }, []);
+  useEffect(() => {
+    mainItemStore.fetch();
+    console.log(mainItemStore.mainItems);
+  }, []);
 
   return (
     <div>

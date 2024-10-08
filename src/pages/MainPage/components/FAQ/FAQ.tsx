@@ -106,11 +106,11 @@ export const FAQ: React.FC<FAQProps> = ({ title, description }: FAQProps) => {
   const faqsStore = useFaqStore();
 
   useEffect(() => {
-    faqsStore.fetch();
+    faqsStore.fetch;
   }, []);
   const faqItems = faqsStore.faqs.length ? faqsStore.faqs : [];
   return (
-    <FaqWrapper>
+    <FaqWrapper id="faq">
       <FAQsStyled>
         <FAQTitle>
           <h1>{title}</h1>

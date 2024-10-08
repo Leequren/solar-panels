@@ -1,7 +1,7 @@
-import {apiUrl} from "@/const/backendUrl";
-import {backendRoutes} from "@/const/routes";
+import { apiUrl } from "@/const/backendUrl";
+import { backendRoutes } from "@/const/routes";
 import ky from "ky";
-import {create} from "zustand";
+import { create } from "zustand";
 
 export interface IPreviewCatalog {
   id: number;
@@ -20,6 +20,6 @@ export const usePreviewCatalogStore = create<IPreviewCatalogState>((set) => ({
     const previewCatalog = await ky
       .get(`${apiUrl}${backendRoutes.getPreviewCatalogWorkstations}`)
       .json<IPreviewCatalog[]>();
-    set({previewCatalog: previewCatalog});
+    set({ previewCatalog: previewCatalog });
   },
 }));
