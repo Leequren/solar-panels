@@ -1,8 +1,10 @@
+import React, {useState} from 'react';
+import {Modal} from '@/components/Modal/Modal';
 import styled from "styled-components";
 import ArrowRight from '../../../assets/img/ArrowRight.svg?react'
 
 interface ICartPaymentsProps {
-    price: number
+  price: number
 }
 
 const CartPaymentsStyled = styled.div`
@@ -14,7 +16,7 @@ const CartPaymentsStyled = styled.div`
     height: 100%;
     width: 595px;
     border-radius: 15px;
-    
+
     @media (max-width: 1150px) {
         background-color: white;
         width: 100%;
@@ -25,7 +27,7 @@ const CartPaymentsStyled = styled.div`
 const CardPaymentsTitle = styled.div`
     font-size: 35px;
     font-weight: 500;
-    
+
     @media (max-width: 1150px) {
         font-size: 20px;
         font-weight: 400;
@@ -42,7 +44,7 @@ const CardPaymentsPriceContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
+
     @media (max-width: 1150px) {
         gap: 15px;
     }
@@ -55,6 +57,7 @@ const CardPaymentsButton = styled.div`
     border-radius: 100px;
     padding: 18px 45px;
     font-size: 30px;
+    cursor: pointer;
 
     @media (max-width: 1150px) {
         font-size: 13px;
@@ -67,7 +70,7 @@ const CartPaymentsPrice = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     .title {
         font-size: 26px;
         font-weight: 500;
@@ -78,15 +81,15 @@ const CartPaymentsPrice = styled.div`
         font-size: 26px;
         font-weight: 400;
     }
-    
+
     @media (max-width: 1150px) {
-        
-        .title{
+
+        .title {
             font-size: 13px;
             font-weight: 300;
         }
-        
-        .value{
+
+        .value {
             font-size: 13px;
             font-weight: 300;
         }
@@ -108,15 +111,15 @@ const CartPaymentsDiscount = styled.div`
         font-size: 26px;
         font-weight: 400;
     }
-    
+
     @media (max-width: 1150px) {
-        
-        .title{
+
+        .title {
             font-size: 13px;
             font-weight: 300;
         }
 
-        .value{
+        .value {
             font-size: 13px;
             font-weight: 300;
         }
@@ -185,16 +188,16 @@ const CartPaymentsTotalPrice = styled.div`
         font-size: 60px;
         font-weight: 400;
     }
-    
+
     @media (max-width: 1150px) {
         gap: 10px;
 
-        .title{
+        .title {
             font-size: 13px;
             font-weight: 300;
         }
-        
-        .value{
+
+        .value {
             font-size: 20px;
             font-weight: 400;
         }
@@ -202,38 +205,50 @@ const CartPaymentsTotalPrice = styled.div`
 `
 
 export function CartPayments({price}: ICartPaymentsProps) {
-    let promo = price / 10
-    let totalPrice = price - promo
-    return (
-        <CartPaymentsStyled>
-            <CardPaymentsTitle>
-                <span>К оплате</span>
-            </CardPaymentsTitle>
-            <CardPaymentsPriceWrapper>
-                <CardPaymentsPriceContainer>
-                    <CartPaymentsPrice>
-                        <span className='title'>Стоимость товаров </span>
-                        <span className='value'>{price} ₽</span>
-                    </CartPaymentsPrice>
-                    <CartPaymentsDiscount>
-                        <span className='title'>Скидка </span>
-                        <span className='value'>{promo} ₽</span>
-                    </CartPaymentsDiscount>
-                    <CartPaymentsPromo>
-                        <input type="text" placeholder="Ввести промокод"/>
-                        <button>
-                            <ArrowRight/>
-                        </button>
-                    </CartPaymentsPromo>
-                    <CartPaymentsTotalPrice>
-                        <span className='title'>Итого </span>
-                        <span className='value'>{totalPrice} ₽</span>
-                    </CartPaymentsTotalPrice>
-                </CardPaymentsPriceContainer>
-                <CardPaymentsButton>
-                    <span>Оформить заказ</span>
-                </CardPaymentsButton>
-            </CardPaymentsPriceWrapper>
-        </CartPaymentsStyled>
-    )
+  let promo = price / 10
+  let totalPrice = price - promo
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <CartPaymentsStyled>
+      <CardPaymentsTitle>
+        <span>К оплате</span>
+      </CardPaymentsTitle>
+      <CardPaymentsPriceWrapper>
+        <CardPaymentsPriceContainer>
+          <CartPaymentsPrice>
+            <span className='title'>Стоимость товаров </span>
+            <span className='value'>{price} ₽</span>
+          </CartPaymentsPrice>
+          <CartPaymentsDiscount>
+            <span className='title'>Скидка </span>
+            <span className='value'>{promo} ₽</span>
+          </CartPaymentsDiscount>
+          <CartPaymentsPromo>
+            <input type="text" placeholder="Ввести промокод"/>
+            <button>
+              <ArrowRight/>
+            </button>
+          </CartPaymentsPromo>
+          <CartPaymentsTotalPrice>
+            <span className='title'>Итого </span>
+            <span className='value'>{totalPrice} ₽</span>
+          </CartPaymentsTotalPrice>
+        </CardPaymentsPriceContainer>
+        <CardPaymentsButton onClick={openModal}>
+          <span>Оформить заказ</span>
+        </CardPaymentsButton>
+      </CardPaymentsPriceWrapper>
+      <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
+    </CartPaymentsStyled>
+  )
 }
