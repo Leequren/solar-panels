@@ -1,10 +1,10 @@
 import { backendRoutes, routes } from "@/const/routes";
 import ky from "ky";
 import { create } from "zustand";
-import {apiUrl} from "@/const/backendUrl.ts";
+import { apiUrl } from "@/const/backendUrl.ts";
 
 export interface IPartConfiguration {
-  [id_configuration: number]: {
+  [id_configuration: string]: {
     price: number;
     valueConfig: string;
     partId: number | null;

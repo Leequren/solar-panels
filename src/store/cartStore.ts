@@ -26,6 +26,7 @@ interface ICartState {
   addFirstPart: (part: ICartPartInsert) => void;
   incementCountPart: (id: number) => void;
   decrementCountPart: (id: number) => void;
+  selectPartCfg: (id: number, keyConfig: string, keyValue: IPartConfig) => void;
   reduceSum: () => void;
 }
 
@@ -65,6 +66,18 @@ export const useCartStore = create<ICartState>()(
         }
         set({ parts: parts });
         get().reduceSum();
+      },
+      selectPartCfg: (id, keyConfig, keyValue) => {
+        const parts = get().parts;
+        if (!parts) return;
+
+        if (parts[id] && parts[id].config) {
+          parts[id].config[keyConfig] = keyValue;
+        } else {
+          parts[id].config = { [keyConfig]: keyValue };
+        }
+
+        set({ parts: parts });
       },
       reduceSum: () => {
         let sum = 0;

@@ -4,6 +4,7 @@ import { ProductsCardItemsCharacteristics } from "@/pages/ProductsCardInfoPage/c
 import { ProductsCardItemsDescription } from "@/pages/ProductsCardInfoPage/components/ProductsCardItemsDescription.tsx";
 
 interface IProductsCardItemsProps {
+  id: number;
   imgUrl: string;
   name: string;
   price: number;
@@ -39,6 +40,7 @@ const CardItemsCharacteristicsContainer = styled.div``;
 const CardItemsDescriptionWrapper = styled.div``;
 
 export function ProductsCardItems({
+  id,
   imgUrl,
   name,
   price,
@@ -52,6 +54,7 @@ export function ProductsCardItems({
           <ProductsCardItemsImage imgUrl={imgUrl} />
           <CardItemsCharacteristicsContainer>
             <ProductsCardItemsCharacteristics
+              idPart={id}
               name={name}
               price={price}
               partConfigurations={partConfigurations}
